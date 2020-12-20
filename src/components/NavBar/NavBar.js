@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuItems from "./MenuItems";
-import Button from '../Button';
 import CartWidget from '../CartWidget/CartWidget'
 import { RiCactusLine } from "react-icons/ri";
 import './NavBar.scss'
@@ -23,9 +22,9 @@ handleClick = () => {
                     <RiCactusLine className="cactus-icon"/>
                 </div>
                 <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}> 
-                    {MenuItems.map((item, index) => {
+                    {MenuItems.map((item) => {
                         return (
-                            <li key={index}>
+                            <li key={item.key}>
                                 <a className={item.cName} href={item.url}>
                                     {item.title}
                                 </a>

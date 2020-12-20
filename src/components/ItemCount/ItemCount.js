@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './ItemCount.scss';
-
+/*
 class ItemCount extends React.Component {
     constructor(props) {
         super(props);
@@ -51,6 +51,42 @@ class ItemCount extends React.Component {
             </div>
         )
     }
-}
+}*/
+
+const ItemCount = () => {
+    const[initial, setInitial] = useState(0);
+    const[stock, setStock] = useState(10);
+
+    const decrease = () => {
+        if(initial <= 0) {
+        }else {
+            setInitial(initial - 1);
+        }  
+    };
+
+    const increase = () => {
+        setInitial(initial + 1);
+    };
+
+    const addOn = () => {
+        if(initial > stock) {
+            alert(`No hay stock suficiente.`)
+        }else {
+            setStock(stock - initial);
+            alert(`Se han añadido ${initial} items.`);
+        }
+    };
+
+    return(
+        <div className="item-count">
+            <div className="counter-container">
+                <button onClick={decrease}>-</button>
+                <p>{initial}</p>
+                <button onClick={increase}>+</button>
+            </div>
+            <button className="addToCart-btn" onClick={addOn}>Añadir al carrito</button>
+        </div>
+    )
+};
 
 export default ItemCount; 
