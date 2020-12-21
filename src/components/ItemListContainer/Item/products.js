@@ -1,4 +1,4 @@
-let Products = [
+let products = [
     {
         id: 123,
         title: 'cactus1',
@@ -25,4 +25,4 @@ let Products = [
     }
 ];
 
-export default Products;
+export default products;
