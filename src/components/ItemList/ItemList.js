@@ -32,7 +32,7 @@ const ItemList = () => {
                     photo={product.pictureUrl}
                     alt={product.alt}
                     />
-                    <ItemCount/>
+                    <ItemCount initial={0} stock={15}/>
                 </div>
                 )
                 

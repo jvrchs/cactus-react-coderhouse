@@ -53,9 +53,9 @@ class ItemCount extends React.Component {
     }
 }*/
 
-const ItemCount = () => {
-    const[initial, setInitial] = useState(0);
-    const[stock, setStock] = useState(10);
+const ItemCount = (props) => {
+    const[initial, setInitial] = useState(props.initial);
+    const[stock, setStock] = useState(props.stock);
 
     const decrease = () => {
         if(initial <= 0) {
