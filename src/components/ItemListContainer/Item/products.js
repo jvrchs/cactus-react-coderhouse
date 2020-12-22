@@ -1,6 +1,6 @@
 let products = [
     {
-        id: 123,
+        id: '123',
         title: 'cactus1',
         description: 'Descripción 1',
         price: 10,
@@ -8,7 +8,7 @@ let products = [
         alt: 'cactus1'
     },
     {
-        id: 456,
+        id: '456',
         title: 'cactus2',
         description: 'Descripción 2',
         price: 8,
@@ -16,7 +16,7 @@ let products = [
         alt: 'cactus2'
     },
     {
-        id: 789,
+        id: '789',
         title: 'cactus3',
         description: 'Descripción 3',
         price: 14,
