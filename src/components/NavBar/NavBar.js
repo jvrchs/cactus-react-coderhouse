@@ -1,46 +1,59 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MenuItems from "./MenuItems";
-import CartWidget from '../CartWidget/CartWidget'
+import CartWidget from '../CartWidget/CartWidget';
 import { RiCactusLine } from "react-icons/ri";
 import './NavBar.scss'
+import {Link} from 'react-router-dom';
 
-class NavBar extends React.Component {
-state = { clicked: false};
+const NavBar = () => {
+    const[click, setClick] = useState(false);
+    const[navbar, setNavbar] = useState(false);
 
-handleClick = () => {
-    this.setState({ clicked: !this.state.clicked })
-}
+    const handleClick = () => setClick(!click);
 
-    render() {
-        return(
-            <nav className='navbar-items'>
-                <div className="cart-icon-mobile">
+    const changeBackground = () => {
+        window.scrollY >= 80 ? setNavbar(true) : setNavbar(false);
+    }
+
+    window.addEventListener('scroll', changeBackground);
+
+    return(
+        <>
+            <nav className={navbar ? 'navbar-items isScrolled' : 'navbar-items'}>
+                <div className="cart-icon-mobile-container">
                     <CartWidget/>
                 </div>
                 <div className="logo-container">
-                    <h1 className='logo-name'>Cactus</h1>
-                    <RiCactusLine className="cactus-icon"/>
+                    <Link to="/" className="logo-link">
+                        <div className="logo-wrapper">
+                            <h2 className='logo-name'>Cactus</h2>
+                            <RiCactusLine className="cactus-icon"/>
+                        </div>
+                    </Link>
                 </div>
-                <ul className={this.state.clicked ? 'nav-menu active' : 'nav-menu'}> 
+                <ul className={click ? 'nav-menu active' : 'nav-menu'}> 
                     {MenuItems.map((item) => {
-                        return (
+                        return (                 
                             <li key={item.key}>
-                                <a className={item.cName} href={item.url}>
-                                    {item.title}
-                                </a>
+                                <Link to={item.path} className={item.cName}>    
+                                {item.title}
+                                </Link>
                             </li>
                         )
                     })}
                 </ul>
                 <div className="cart-icon">
-                    <CartWidget/>
+                    <Link to="/carro">
+                        <CartWidget/>
+                    </Link>
                 </div>
-                <div className='menu-icon' onClick={this.handleClick}>
-                    <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+                <div className='menu-icon' onClick={handleClick}>
+                    <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>   
             </nav>
-        )
-    }
+            <div className="nav-child"></div>
+        </>
+    )
 }
 
 export default NavBar;

@@ -1,5 +1,5 @@
-@import "../design-tokens/scss-variables.scss";
-@import "../design-tokens/css-variables.scss";
+@import "../../design-tokens/scss-variables.scss";
+@import "../../design-tokens/css-variables.scss";
 
 .btn {
     padding: 0.8rem 2rem;
@@ -7,6 +7,7 @@
     outline: none;
     border: none;
     cursor: pointer;
+    align-self:flex-start;
 }
 
 .btn:hover {
@@ -17,28 +18,29 @@
     transition: 250ms;
 }
 
-.btn-primary {
+.btn--primary {
     background-color: var(--btn-primary);
 }
 
-.btn-secondary {
+.btn--secondary {
     background-color: var(--btn-secondary);
 }
 
-.btn-outline {
+.btn--outline {
     background-color: transparent;
     color: #fff;
     padding: 0.8rem 2rem;
     border-radius: 0.4rem;
-    border: 0.1rem solid var(--btn-primary);
+    border: 0.15rem solid #fff;
     transition: all 0.3s ease-out;
 }
 
 .btn--medium {
     padding: 0.8rem 2rem;
     border-radius: 0.4rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #fff;
+    width: fit-content;
 }
 
 .btn--large {
@@ -46,4 +48,11 @@
     border-radius: 0.4rem;
     font-size: 2rem;
     color: #fff;
+    width: fit-content;
+}
+
+@media screen and (max-width: 600px) {
+    .btn--medium {
+        font-size: 1rem;
+    }
 }

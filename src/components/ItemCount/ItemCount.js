@@ -80,11 +80,11 @@ const ItemCount = (props) => {
     return(
         <div className="item-count">
             <div className="counter-container">
-                <button onClick={decrease}>-</button>
+                <button className="counter-btn " onClick={decrease}><p>-</p></button>
                 <p>{initial}</p>
-                <button onClick={increase}>+</button>
+                <button className="counter-btn " onClick={increase}><p>+</p></button>
             </div>
-            <button className="addToCart-btn" onClick={addOn}>Añadir al carrito</button>
+            <button className="counter-btn addToCart-btn" onClick={addOn}><p>Añadir al carrito</p></button>
         </div>
     )
 };

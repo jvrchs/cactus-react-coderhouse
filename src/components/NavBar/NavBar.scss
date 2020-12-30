@@ -1,16 +1,32 @@
 @import "../../design-tokens/_scss-variables.scss";
 @import "../../design-tokens/css-variables.scss";
 
+$navbar-height: 8rem;
+
 .navbar-items {
-    background-color: var(--color-primary);
-    height: 8rem;
+    background-color: var(--color-secondary);
+    transition: background-color 0.2s ease-in-out;
+    height: $navbar-height;
     display: flex;
+    position: fixed;
     justify-content: center;
     align-items: center;
     font-size: 1.8rem;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 }
 
-.logo-container {
+.navbar-items.isScrolled {
+    background-color: var(--color-primary);
+    transition: background-color 0.2s ease-in;
+}
+
+.logo-link{
+    text-decoration: none;
+}
+
+.logo-wrapper {
     display: flex;
     align-items: center;
 }
@@ -29,7 +45,7 @@
 }
 
 .fa-react {
-    margin-left: 0,8rem;
+    margin-left: 0.8rem;
     font-size: 2.5rem;
 }
 
@@ -52,8 +68,7 @@
 }
 
 .nav-links:hover {
-    background-color: var(--color-secondary);
-    border-radius: 0.4rem;
+    color: gray;
     transition: all 0.2s ease-out;
 }
 
@@ -65,13 +80,18 @@
     display: none;
 }
 
-.cart-icon-mobile {
+.cart-icon-mobile-container {
     display: none;
+}
+
+.nav-child {
+    height: $navbar-height;
+    width: 100%;
 }
 
 @media screen and (max-width: 960px) {
     .navbar-items {
-        position: relative;
+        position: fixed;
     }
 
     .nav-menu {
@@ -150,10 +170,22 @@
          display: none;
      }
 
-     .cart-icon-mobile {
+     .cart-icon-mobile-container {
         display: flex;
         position: absolute;
         left: 0;
         margin-left: 2rem;
      }
+}
+
+@media screen and (max-width: 600px) {
+    .logo-name {
+        font-size: $nav-font-size-mobile;
+        margin-left: 0;
+    }
+    .cactus-icon, .fas {
+        font-size: $nav-font-size-mobile;
+    }
+   
+    
 }

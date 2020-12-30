@@ -2,9 +2,9 @@ import React from 'react';
 import './Button.scss';
 
 const STYLES = [
-    'btn-primary',
-    'btn-secondary',
-    'btn-outline'
+    'btn--primary',
+    'btn--secondary',
+    'btn--outline'
 ];
 
 const SIZES = [

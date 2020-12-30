@@ -1,32 +1,32 @@
 const MenuItems = [
     {
         key: 'nav-index',
+        path: '/',
         title: 'Inicio',
-        url: '#',
         cName: 'nav-links'
     },
     {
-        key: 'nav-products',
-        title: 'Productos',
-        url: '#',
+        key: 'nav-shop',
+        path: '/tienda',
+        title: 'Tienda',
         cName: 'nav-links'
     },
     {
         key: 'nav-about',
+        path: '/nosotros',
         title: 'Nosotros',
-        url: '#',
         cName: 'nav-links'
     },
     {
         key: 'nav-contact',
+        path: '/contacto',
         title: 'Contacto',
-        url: '#',
         cName: 'nav-links'
     },
     {
         key: 'nav-account',
+        path: '/mi-cuenta',
         title: 'Mi cuenta',
-        url: '#',
         cName: 'nav-links'
     }
 ]
