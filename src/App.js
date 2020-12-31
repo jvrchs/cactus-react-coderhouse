@@ -10,6 +10,7 @@ import Cart from './components/Pages/Cart/Cart';
 import MyAccount from './components/Pages/MyAccount/MyAccount';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './components/Pages/ItemDetailContainer/ItemDetailContainer';
+import Wishlist from './components/Pages/Wishlist/Wishlist';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/contacto" component={Contact}/>
           <Route path='/mi-cuenta' component={MyAccount}/>
           <Route path="/carro" component={Cart}/>
+          <Route path="/mi-cuenta/wishlist" component={Wishlist}/>
           <Route path="/category/:categoryId" component={ItemListContainer}/>
           <Route path="/item/:itemId" component={ItemDetailContainer}/>
         </Switch>

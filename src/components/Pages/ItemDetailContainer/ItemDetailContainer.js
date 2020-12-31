@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
         const getProducts = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve(products);
-            }, 2000);
+            }, 1000);
         });
         getProducts.then((productsArr) => {
             setProductsData(productsArr);

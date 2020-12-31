@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import Button from '../../../Button/Button';
+import {Link} from 'react-router-dom';
 
 const Carousel = ({slides}) => {
     const [current, setCurrent] = useState(0);
@@ -22,18 +23,29 @@ const Carousel = ({slides}) => {
                 <IoIosArrowForward className="right-arrow" onClick={nextSlide}/>
                 {slides.map((slide, index) => {
                     return(
-                        <div className={index === current ? 'slide active' : 'slide'} key={slide.id}>
+                        <div className={index === current ? 'slide active' : 'slide'} key={slide.id}
+                        style={{backgroundImage: `url(${slide.image})`}}>
                         {index === current && (
-                            <>
-                                <img src={slide.image} alt={slide.alt} className="carousel-image"/>
-                                <div className="header-container">
-                                    {slide.textFirst}
-                                    {slide.textSecond}
-                                    <br/>
-                                    <Button buttonSize="btn--medium" buttonStyle="btn--outline">SHOP</Button>
-                                </div>
-                            </>)
-                        }  
+                            <>  
+                                {window.innerWidth > 600 ? 
+                                    <div className="header-container">
+                                        {slide.textFirst}
+                                        {slide.textSecond}
+                                        <br/>
+                                        <Button buttonSize="btn--medium" buttonStyle="btn--outline">
+                                            <Link className="shop-btn" to='/tienda'>
+                                                TIENDA
+                                            </Link>
+                                        </Button>
+                                    </div>
+                                :
+                                    <div className="header-container">
+                                        {slide.textFirst}
+                                        {slide.textSecond}
+                                    </div>
+                                }
+                            </>
+                        )}  
                         </div>
                     )
                 })}

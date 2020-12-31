@@ -19,6 +19,7 @@ const ItemList = ({productsData, categoryUrl}) => {
                         category={item.category}
                         description={item.description}
                         price={item.price}
+                        offer={item.offer ? item.offer[1] : null}
                         image={item.images[0]}
                         alt={item.alt}/>   
                         :
@@ -38,6 +39,7 @@ const ItemList = ({productsData, categoryUrl}) => {
                         category={item.category}
                         description={item.description}
                         price={item.price}
+                        offer={item.offer ? item.offer[1] : null}
                         image={item.images[0]}
                         alt={item.alt}/>   
                     </>

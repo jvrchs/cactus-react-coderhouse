@@ -1,9 +1,6 @@
--cambiar corazon de item card a react-icons
 -navbar mobile
--cambiar productos a tienda
 -pedir por promise sección txtimg
--configurar ofertas item card
--corazon rojo al hacer click
+-Al hacer click en corazón debe aparecer alerta que se añadió a favoritos
 -márgenes páginas
 -Poner los route en main
 -Hacer carpeta rutas

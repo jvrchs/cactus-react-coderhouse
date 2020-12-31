@@ -30,6 +30,11 @@ const categories = [
         title: 'Echeveria',
         path: '/echeveria',
         cName: 'dropdown-link'
+    },
+    {
+        title: 'Maceteros',
+        path: '/maceteros',
+        cName: 'dropdown-link'
     }
 ]
 

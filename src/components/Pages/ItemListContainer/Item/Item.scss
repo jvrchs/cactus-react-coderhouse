@@ -18,6 +18,14 @@
             height: 35rem;
         }
     }
+    .offer-icon {
+        position: absolute;
+        top: 0;
+        right: -1.8rem;
+        font-size: 5.5rem;
+        z-index: 1;
+        color: #5c5f5c;
+    }
     .heart{
         display: flex;
         justify-content: flex-start;
@@ -25,13 +33,16 @@
         flex-direction: column;
         width: 3rem;
         height: 3rem;
+        margin-right: 1rem;
         &:hover {
             cursor: pointer;
         }
         svg,path,circle{
-            stroke: currentColor;
+            stroke: #000;
+            stroke-width: 1.7rem;
             fill:transparent;
             transition-delay: .2s;
+            font-size: 6rem;
         }
     }
 }
@@ -43,7 +54,7 @@
     left: 0;
     width: 100%;
     height: 20rem;
-    background-color: bisque;  
+    background-color: #bfc5be;  
 }
 
 .card-img {
@@ -51,10 +62,11 @@
     background-position: center bottom;
     background-repeat: no-repeat;
     position: absolute;
-    bottom: calc(100% - 26rem);
+    bottom: calc(100% - 24rem);
     width: 100%;
     height: 25rem;
     transition: ease all .3s;
+    z-index: 10;
 }
 
 .card-info {
@@ -71,13 +83,16 @@
         font-weight: bold;
         line-height: 1.3;
         margin-bottom: 1rem;
+        a {
+            text-decoration: none;
+            color: #000;
+        }
     }
     p {
         width: 100%;
         font-size: 1.8rem;
         text-align: center;
     }
-    
 }
 
 .action {
@@ -100,17 +115,21 @@
         color: #000;
         text-align: left;
         &.old-price {
-            color: red;
-            font-size: 1.5rem;
+            color: #000;
+            font-size: 1.8rem;
             text-decoration: line-through;
             text-align: left;
         }
         &.new-price{
-            color:#000;
-            font-size:25px;
+            color: red;
+            font-size:1.8rem;
             font-weight: 800;
         }
     }
+}
+
+.no-offer {
+    display: none;
 }
 
 @media screen and (max-width: 600px) {

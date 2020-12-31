@@ -3,10 +3,13 @@ import CartWidget from '../CartWidget/CartWidget';
 import { RiCactusLine } from "react-icons/ri";
 import { FaCaretDown } from "react-icons/fa"
 import './NavBar.scss'
-import {Link} from 'react-router-dom';
+import {Link, useParams, useLocation} from 'react-router-dom';
 import Dropdown from './Dropdown';
+import {FaHeart} from 'react-icons/fa';
 
 const NavBar = () => {
+    const url = useLocation();
+
     const[click, setClick] = useState(false);
     const[navbar, setNavbar] = useState(false);
     const[dropdown, setDropdown] = useState(false);
@@ -32,21 +35,28 @@ const NavBar = () => {
     };
 
     const changeBackground = () => {
-        window.scrollY >= 80 ? setNavbar(true) : setNavbar(false);
+        window.scrollY >= 80 ? setNavbar(false) : setNavbar(true);
     }
 
     window.addEventListener('scroll', changeBackground);
 
     return(
         <>
-            <nav className={navbar ? 'navbar-items isScrolled' : 'navbar-items'}>
-                <div className='cart-icon-mobile-container'>
-                    <CartWidget/>
-                </div>
+            <nav className=
+                {
+                url.pathname === '/' ? 
+                    (navbar ? 'navbar-items notScrolled':'navbar-items')
+                    :
+                    'navbar-items'
+                }
+            >
                 <div className='logo-container'>
                     <Link to ="/" className="logo-link">
                         <div className="logo-wrapper">
-                            <h2 className='logo-name'>Cactus</h2>
+                            {url.pathname === '/' ?
+                            <h1 className='logo-name'>Cactus</h1>
+                            :
+                            <h2 className='logo-name'>Cactus</h2>}
                             <RiCactusLine className='cactus-icon'/>
                         </div>
                     </Link>
@@ -81,16 +91,18 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="cart-icon-container">
+                <div className='cart-wishlist-container'>
                     <Link to="/carro">
                         <CartWidget/>
+                    </Link>
+                    <Link to="/mi-cuenta/wishlist">
+                        <FaHeart/>
                     </Link>
                 </div>
                 <div className='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>
                 </div>   
             </nav>
-            <div className="nav-wrap"></div>
         </>
     )
 }
