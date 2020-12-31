@@ -72,6 +72,11 @@ $navbar-height: 8rem;
     transition: all 0.2s ease-out;
 }
 
+.links-container {
+    height: 8rem;
+    display: flex;
+}
+
 .nav-links-mobile {
    display: none; 
 }
@@ -84,7 +89,13 @@ $navbar-height: 8rem;
     display: none;
 }
 
-.nav-child {
+.shop-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 2.9rem 1.6rem;
+}
+
+.nav-wrap {
     height: $navbar-height;
     width: 100%;
 }
@@ -166,7 +177,7 @@ $navbar-height: 8rem;
         color: #47BFA9;
         transition: 250ms;
     }
-     .cart-icon {
+     .cart-icon-container {
          display: none;
      }
 

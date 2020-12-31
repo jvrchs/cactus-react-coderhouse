@@ -1,10 +1,14 @@
--cambiar carrito y corazon de item card a react-icons
--navbar hover links
+-cambiar corazon de item card a react-icons
 -navbar mobile
--agregar contador a item card
 -cambiar productos a tienda
--pedir productos por promise en carusel y sección txtimg
+-pedir por promise sección txtimg
 -configurar ofertas item card
 -corazon rojo al hacer click
--navbar links hover
 -márgenes páginas
+-Poner los route en main
+-Hacer carpeta rutas
+-Hacer loading
+-Carousel sea deslizando
+-Corrección counter solo debe permitir stock
+-Hacer item card mas ancho
+-Seccion tienda inicio aleatoria

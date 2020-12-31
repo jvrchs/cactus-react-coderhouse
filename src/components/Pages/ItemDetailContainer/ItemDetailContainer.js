@@ -1,17 +1,19 @@
-import React, {useState, useEffect, useParams} from 'react';
+import React, {useState, useEffect} from 'react';
 import ItemDetail from './ItemDetail/ItemDetail';
 import products from '../ItemListContainer/Item/products';
-
-const getProducts = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(products);
-    }, 2000);
-});
+import {useParams} from 'react-router-dom';
 
 const ItemDetailContainer = () => {
     const[productsData, setProductsData] = useState(false);
 
+    const idUrlParam = useParams();
+
     useEffect(() => {
+        const getProducts = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(products);
+            }, 2000);
+        });
         getProducts.then((productsArr) => {
             setProductsData(productsArr);
         })
@@ -21,7 +23,7 @@ const ItemDetailContainer = () => {
         <>
             {
                 productsData ?
-                <ItemDetail productsData={productsData}/>
+                <ItemDetail productsData={productsData} id={idUrlParam}/>
                 :
                 <p>Cargando producto...</p>
             }

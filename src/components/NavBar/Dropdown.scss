@@ -1,0 +1,33 @@
+@import "../../design-tokens/_scss-variables.scss";
+@import "../../design-tokens/css-variables.scss";
+
+.dropdown-menu {
+    width: 20rem;
+    position: absolute;
+    top: 8rem;
+    list-style: none;
+    text-align: start;
+    background-color: #984759;
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+}
+
+.dropdown-menu li a:hover {
+    color: gray;
+    transition: all 0.2s ease-out;
+}
+
+.dropdown-menu.clicked {
+    display: none;
+}
+
+.dropdown-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #fff;
+    padding: 1.6rem;
+}

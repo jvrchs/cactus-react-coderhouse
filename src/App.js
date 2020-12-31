@@ -1,5 +1,5 @@
 import React from 'react';
-import './components/NavBar/NavBar'
+import './components/NavBar/NavBar';
 import NavBar from './components/NavBar/NavBar';
 import Shop from './components/Pages/Shop/Shop';
 import ItemListContainer from './components/Pages/ItemListContainer/ItemListContainer';
@@ -7,13 +7,13 @@ import Home from './components/Pages/Home/Home';
 import About from './components/Pages/About/About';
 import Contact from './components/Pages/Contact/Contact';
 import Cart from './components/Pages/Cart/Cart';
-import MyAccount from './components/Pages/MyAccount/MyAccount'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import MyAccount from './components/Pages/MyAccount/MyAccount';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetailContainer from './components/Pages/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <NavBar/>
         <Switch>
@@ -23,11 +23,11 @@ function App() {
           <Route path="/contacto" component={Contact}/>
           <Route path='/mi-cuenta' component={MyAccount}/>
           <Route path="/carro" component={Cart}/>
-          <Route path="/category/:category-id" component={ItemListContainer}/>
-          <Route path="/item/:itemId"  component={ItemDetailContainer}/>
+          <Route path="/category/:categoryId" component={ItemListContainer}/>
+          <Route path="/item/:itemId" component={ItemDetailContainer}/>
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

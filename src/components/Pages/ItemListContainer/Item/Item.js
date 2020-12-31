@@ -3,18 +3,26 @@ import "./Item.scss";
 import ItemCount from '../../../ItemCount/ItemCount';
 import {Link} from 'react-router-dom';
 
-const Item = (props) => {
+const Item = ({
+    id,
+    title,
+    category,
+    description,
+    price,
+    image,
+    alt
+}) => {
     return (
         <div className="item-card">
             <div className="wrapper">
                 <div className={`color-bg`}></div>
-                <div className="card-img" style={{"backgroundImage": `url(media/img/products/${props.image})`}}></div>
+                <div className="card-img" style={{"backgroundImage": `url(../media/img/products/${image})`}}></div>
                 <div className="card-info">
-                    <h3><Link to={`/item/${props.id}`}>{props.title}</Link></h3>
-                    <p className="category">{props.category}</p>
+                    <h3><Link to={`/item/${id}`}>{title}</Link></h3>
+                    <p className="category">{category}</p>
                     <div className="action">
                         <div className="price-group">
-                            <p className="price">{props.price}</p>
+                            <p className="price">{price}</p>
                         </div>
                         <div className="heart">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">

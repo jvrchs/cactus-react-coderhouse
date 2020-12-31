@@ -1,6 +1,7 @@
 const products = [
     {
-        category: "Air Plant",
+        category: "Plantas del aire",
+        pathName: "plantas-del-aire",
         id: "air-01",
         title: "Nana",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -10,7 +11,8 @@ const products = [
         alt: "nana"
     },
     {
-        category: "Air Plant",
+        category: "Plantas del aire",
+        pathName: "plantas-del-aire",
         id: "air-02",
         title: "Tillandsia Brachycaulos",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -20,7 +22,8 @@ const products = [
         alt: "tillandsia-brachycaulos"
     },
     {
-        category: "Air Plant",
+        category: "Plantas del aire",
+        pathName: "plantas-del-aire",
         id: "air-03",
         title: "Tillandsia Ionantha Guatemala",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -30,7 +33,8 @@ const products = [
         alt: "tillandsia-ionantha-guatemala"
     },
     {
-        category: "Air Plant",
+        category: "Plantas del aire",
+        pathName: "plantas-del-aire",
         id: "air-04",
         title: "Tillandsia Ionantha Rubra",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -41,6 +45,7 @@ const products = [
     },
     {
         category: "Crassula",
+        pathName: "crassula",
         id: "crass-01",
         title: "Baby Necklace",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -51,6 +56,7 @@ const products = [
     },
     {
         category: "Crassula",
+        pathName: "crassula",
         id: "crass-02",
         title: "Nudicaulis var. Herrei",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -61,6 +67,7 @@ const products = [
     },
     {
         category: "Crassula",
+        pathName: "crassula",
         id: "crass-03",
         title: "Red Pagoda",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -71,6 +78,7 @@ const products = [
     },
     {
         category: "Cactus",
+        pathName: "cactus",
         id: "cact-01",
         title: "Biznaga Espinosa",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
