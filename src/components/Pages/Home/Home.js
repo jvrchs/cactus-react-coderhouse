@@ -1,6 +1,6 @@
 import React from 'react'
-import ItemListContainer from '../ItemListContainer/ItemListContainer'
 import CarouselContainer from './CarouselContainer/CarouselContainer'
+import ShopSectionContainer from './ShopSection/ShopSectionContainer'
 import TextImageContent from './TextImageContent/TextImageContent'
 
 const Home = () => {
@@ -8,7 +8,7 @@ const Home = () => {
         <>
             <CarouselContainer/>
             <TextImageContent/>
-            <ItemListContainer/>
+            <ShopSectionContainer/>
         </>
     )
 }

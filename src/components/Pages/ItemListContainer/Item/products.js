@@ -1,51 +1,55 @@
 const products = [
     {
         category: "Plantas del aire",
-        pathName: "plantas-del-aire",
+        categoryPathName: "plantas-del-aire",
         id: "air-01",
         title: "Nana",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 2990,
         offer: [false],
         images: ["air-plants/nana/nana-trans.png"],
-        alt: "nana"
+        alt: "nana",
+        stock: 20
     },
     {
         category: "Plantas del aire",
-        pathName: "plantas-del-aire",
+        categoryPathName: "plantas-del-aire",
         id: "air-02",
         title: "Tillandsia Brachycaulos",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 2990,
         offer: [true, 1990],
         images: ["air-plants/tillandsia-brachycaulos/brachycaulos-trans.png"],
-        alt: "tillandsia-brachycaulos"
+        alt: "tillandsia-brachycaulos",
+        stock: 20
     },
     {
         category: "Plantas del aire",
-        pathName: "plantas-del-aire",
+        categoryPathName: "plantas-del-aire",
         id: "air-03",
         title: "Tillandsia Ionantha Guatemala",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 3990,
         offer: [true, 2490],
         images: ["air-plants/tillandsia-ionantha-guatemala/guatemala-trans.png"],
-        alt: "tillandsia-ionantha-guatemala"
+        alt: "tillandsia-ionantha-guatemala",
+        stock: 20
     },
     {
         category: "Plantas del aire",
-        pathName: "plantas-del-aire",
+        categoryPathName: "plantas-del-aire",
         id: "air-04",
         title: "Tillandsia Ionantha Rubra",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 2990,
         offer: [false],
         images: ["air-plants/tillandsia-ionantha-rubra/rubra-trans.png"],
-        alt: "tillandsia-ionantha-rubra"
+        alt: "tillandsia-ionantha-rubra",
+        stock: 20
     },
     {
         category: "Crassula",
-        pathName: "crassula",
+        categoryPathName: "crassula",
         id: "crass-01",
         title: "Baby Necklace",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
@@ -56,311 +60,339 @@ const products = [
     },
     {
         category: "Crassula",
-        pathName: "crassula",
+        categoryPathName: "crassula",
         id: "crass-02",
         title: "Nudicaulis var. Herrei",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 3990,
         offer: [true, 2490],
         images: ["crassula/nudicaulis-herrei/nudicaulis-trans.png"],
-        alt: "crassula-nudicaulis-var-herrei"
+        alt: "crassula-nudicaulis-var-herrei",
+        stock: 20
     },
     {
         category: "Crassula",
-        pathName: "crassula",
+        categoryPathName: "crassula",
         id: "crass-03",
         title: "Red Pagoda",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 5990,
         offer: [false],
         images: ["crassula/red-pagoda/red-pagoda-trans.png"],
-        alt: "crassula-red-pagoda"
+        alt: "crassula-red-pagoda",
+        stock: 20
     },
     {
         category: "Cactus",
-        pathName: "cactus",
+        categoryPathName: "cactus",
         id: "cact-01",
         title: "Biznaga Espinosa",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 7990,
         offer: [false],
         images: ["cactus/biznaga-espinosa/biznaga-trans.png"],
-        alt: "cactus-biznaga-espinosa"
+        alt: "cactus-biznaga-espinosa",
+        stock: 20
     },
     {
         category: "Cactus",
-        pathName: "cactus",
+        categoryPathName: "cactus",
         id: "cact-02",
         title: "Garambullo",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 4990,
         offer: [false],
         images: ["cactus/garambullo/garambullo-trans.png"],
-        alt: "cactus-garambullo"
+        alt: "cactus-garambullo",
+        stock: 20
     },
     {
         category: "Cactus",
-        pathName: "cactus",
+        categoryPathName: "cactus",
         id: "cact-03",
         title: "Echinocactus Grusonii",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 6990,
         offer: [true, 4490],
         images: ["cactus/echinocactus-grusonii/echinocactus-trans.png"],
-        alt: "echinocactus-grusonii"
+        alt: "echinocactus-grusonii",
+        stock: 20
     },
     {
         category: "Cactus",
-        pathName: "cactus",
+        categoryPathName: "cactus",
         id: "cact-04",
         title: "Ferocactus Hamatacanthus",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 5990,
         offer: [true, 2490],
         images: ["cactus/ferocactus-hamatacanthus/ferocactus-trans.png"],
-        alt: "ferocactus-hamatacanthus"
+        alt: "ferocactus-hamatacanthus",
+        stock: 20
     },
     {
         category: "Cactus",
-        pathName: "cactus",
+        categoryPathName: "cactus",
         id: "cact-05",
         title: "Pachycereus Marginatus",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 6990,
         offer: [false],
         images: ["cactus/pachycereus-marginatus/marginatus-trans.png"],
-        alt: "pachycereus-marginatus"
+        alt: "pachycereus-marginatus",
+        stock: 20
     },
     {
         category: "Cactus",
-        pathName: "cactus",
+        categoryPathName: "cactus",
         id: "cact-06",
         title: "Echinocereus Rigidissimus",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 6990,
         offer: [false],
         images: ["cactus/echinocereus-rigidissimus/rigidissimus-trans.png"],
-        alt: "echinocereus-rigidissimus"
+        alt: "echinocereus-rigidissimus",
+        stock: 20
     },
     {
         category: "Haworthia",
-        pathName: "aloe-haworthia",
+        categoryPathName: "aloe-haworthia",
         id: "haworth-01",
         title: "Limifolia Striata",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 8990,
         offer: [false],
         images: ["aloe-haworthia/haworthia-limifolia-striata/limifolia-trans.png"],
-        alt: "haworthia-limifolia-striata"
+        alt: "haworthia-limifolia-striata",
+        stock: 20
     },
     {
         category: "Haworthia",
-        pathName: "aloe-haworthia",
+        categoryPathName: "aloe-haworthia",
         id: "haworth-02",
         title: "Limifolia Twister",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 9990,
         offer: [false],
         images: ["aloe-haworthia/haworthia-limifolia-twister/twister-trans.png"],
-        alt: "haworthia-limifolia-twister"
+        alt: "haworthia-limifolia-twister",
+        stock: 18
     },
     {
         category: "Haworthia",
-        pathName: "aloe-haworthia",
+        categoryPathName: "aloe-haworthia",
         id: "haworth-03",
         title: "Zebra",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 7990,
         offer: [false],
         images: ["aloe-haworthia/haworthia-zebra/zebra-trans.png"],
-        alt: "haworthia-zebra"
+        alt: "haworthia-zebra",
+        stock: 18
     },
     {
         category: "Aloe",
-        pathName: "aloe-haworthia",
+        categoryPathName: "aloe-haworthia",
         id: "aloe-01",
         title: "Christmas Carol",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 9990,
         offer: [false],
         images: ["aloe-haworthia/aloe-christmas-carol/christmas-trans.png"],
-        alt: "aloe-christmas-carol"
+        alt: "aloe-christmas-carol",
+        stock: 18
     },
     {
         category: "Aloe",
-        pathName: "aloe-haworthia",
+        categoryPathName: "aloe-haworthia",
         id: "aloe-02",
         title: "Pink Blush",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 7490,
         offer: [true, 5690],
         images: ["aloe-haworthia/aloe-pink-blush/pink-blush-trans.png"],
-        alt: "aloe-pink-blush"
+        alt: "aloe-pink-blush",
+        stock: 25
     },
     {
         category: "Aoenium",
-        pathName: "aoenium",
+        categoryPathName: "aoenium",
         id: "aoen-01",
         title: "Black Rose",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 3490,
         offer: [false],
         images: ["aoenium/black-rose/black-rose-trans.png"],
-        alt: "aoenium-black-rose"
+        alt: "aoenium-black-rose",
+        stock: 25
     },
     {
         category: "Aoenium",
-        pathName: "aoenium",
+        categoryPathName: "aoenium",
         id: "aoen-02",
         title: "Kiwi",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 2490,
         offer: [false],
         images: ["aoenium/kiwi/kiwi-trans.png"],
-        alt: "aoenium-kiwi"
+        alt: "aoenium-kiwi",
+        stock: 25
     },
     {
         category: "Aoenium",
-        pathName: "aoenium",
+        categoryPathName: "aoenium",
         id: "aoen-03",
         title: "Lily Pad Rosettes",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 6990,
         offer: [false],
         images: ["aoenium/lily-pad-rosettes/lily-pad-trans.png"],
-        alt: "aoenium-lily-pad-rosettes"
+        alt: "aoenium-lily-pad-rosettes",
+        stock: 25
     },
     {
         category: "Aoenium",
-        pathName: "aoenium",
+        categoryPathName: "aoenium",
         id: "aoen-04",
         title: "Mardi Gras Rosettes",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 7990,
         offer: [true, 5490],
         images: ["aoenium/mardi-gras-rosettes/mardi-gras-trans.png"],
-        alt: "aoenium-mardi-gras-rosettes"
+        alt: "aoenium-mardi-gras-rosettes",
+        stock: 25
     },
     {
         category: "Echeveria",
-        pathName: "echeveria",
+        categoryPathName: "echeveria",
         id: "echev-01",
         title: "Elegans Blue",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 3990,
         offer: [false],
         images: ["echeveria/elegans-blue/elegans-blue-trans.png"],
-        alt: "echeveria-elegans-blue"
+        alt: "echeveria-elegans-blue",
+        stock: 18
     },
     {
         category: "Echeveria",
-        pathName: "echeveria",
+        categoryPathName: "echeveria",
         id: "echev-02",
         title: "Ramillete",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 6790,
         offer: [true, 4990],
         images: ["echeveria/ramillete/ramillete-trans.png"],
-        alt: "echeveria-ramillete"
+        alt: "echeveria-ramillete",
+        stock: 18
     },
     {
         category: "Echeveria",
-        pathName: "echeveria",
+        categoryPathName: "echeveria",
         id: "echev-03",
         title: "White Rose",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 3490,
         offer: [false],
         images: ["echeveria/white-rose/white-rose-trans.png"],
-        alt: "echeveria-white-rose"
+        alt: "echeveria-white-rose",
+        stock: 18
     },
     {
         category: "Echeveria",
-        pathName: "echeveria",
+        categoryPathName: "echeveria",
         id: "echev-04",
         title: "Purpusorum",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 5490,
         offer: [false],
         images: ["echeveria/purpusorum-berger/purpusorum-trans.png"],
-        alt: "echeveria-purpusorum-a-berger"
+        alt: "echeveria-purpusorum-a-berger",
+        stock: 18
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-01",
         title: "Pack vidrio",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 7990,
         offer: [false],
         images: ["maceteros/black-and-white-glass-pots/glass-trans.png"],
-        alt: "maceteros-vidrio-blanco-y-negro"
+        alt: "maceteros-vidrio-blanco-y-negro",
+        stock: 18
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-02",
         title: "Pack Chevron",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 8990,
         offer: [false],
         images: ["maceteros/chevron-pattern-pots/chevron-trans.png"],
-        alt: "maceteros-patron-chevron"
+        alt: "maceteros-patron-chevron",
+        stock: 8
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-03",
         title: "Pack Huevo",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 8990,
         offer: [true, 6990],
         images: ["maceteros/egg-pots/egg-trans.png"],
-        alt: "maceteros-huevo"
+        alt: "maceteros-huevo",
+        stock: 17
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-04",
         title: "Pack Borde Dorado",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 9990,
         offer: [false],
         images: ["maceteros/gold-rim-pots/gold-trans.png"],
-        alt: "maceteros-borde-dorado"
+        alt: "maceteros-borde-dorado",
+        stock: 13
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-05",
         title: "Pack Geométrico Moderno",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 10990,
         offer: [false],
         images: ["maceteros/modern-geometric-pots/geometric-trans.png"],
-        alt: "maceteros-geometricos-moderno"
+        alt: "maceteros-geometricos-moderno",
+        stock: 23
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-06",
         title: "Pack Glitter Redondo",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 9990,
         offer: [false],
         images: ["maceteros/round-glitter-pots/glitter-trans.png"],
-        alt: "maceteros-glitter-redondos"
+        alt: "maceteros-glitter-redondos",
+        stock: 30
     },
     {
         category: "Maceteros",
-        pathName: "maceteros",
+        categoryPathName: "maceteros",
         id: "macet-07",
         title: "Pack Chispeante",
         description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate voluptas dignissimos doloremque dolore sunt placeat, rerum nostrum tenetur facere praesentium fuga magnam molestias quaerat nisi, expedita laboriosam consequatur eaque laudantium",
         price: 10990,
         offer: [true, 8490],
         images: ["maceteros/sparkly-pots/sparkly-trans.png"],
-        alt: "maceteros-chispeantes"
+        alt: "maceteros-chispeantes",
+        stock: 15
     }
 ];
 

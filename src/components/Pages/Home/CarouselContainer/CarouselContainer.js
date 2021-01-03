@@ -12,7 +12,6 @@ const CarouselContainer = () => {
             resolve(carouselData);
             });
             getSlides.then((slidesArr) => {
-                console.log(slidesArr);
                 setSlidesData(slidesArr)
         });
     }, []);

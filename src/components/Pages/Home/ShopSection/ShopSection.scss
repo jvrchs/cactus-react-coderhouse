@@ -2,42 +2,21 @@
 @import "../../../../design-tokens/css-variables.scss";
 
 .shop-section-container {
-    display: flex;
-    flex-direction: column;
     text-align: center;
     margin-top: $margin-between-sections;
 }
 
 .item-card-container {
     display: grid;
+    justify-content: center;
     justify-items: center;
     align-items: center;
     align-self: center;
-    grid-template-columns: repeat(4, 21rem);
-    grid-auto-rows: 38.5rem;
-    column-gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-auto-rows: 38rem;
 }
 
 .shop-section-button {
     align-self: center;
     margin-top: 3rem;
-}
-
-@media screen and (max-width: 960px) {
-    .item-card-container {
-        grid-template-columns: repeat(3, 21rem);
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .item-card-container {
-        grid-template-columns: repeat(2, 21rem);
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .item-card-container {
-        width: 100%;
-        grid-template-columns: repeat(1, 100%);
-    }
 }

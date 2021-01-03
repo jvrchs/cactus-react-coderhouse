@@ -28,4 +28,12 @@
     .home-body-content-text {
         font-size: $p-font-size-mobile;
     }
+    .home-body-content-text {
+        padding: 2rem 3rem;
+    }
+    .home-body-content-img {
+        img{
+            width: 18rem; 
+        }
+    }
 }

@@ -11,7 +11,7 @@ const ItemList = ({productsData, categoryUrl}) => {
                 return (
                     <>
                         {
-                        item.pathName === categoryUrl.categoryId ?
+                        item.categoryPathName === categoryUrl.categoryId ?
                         <Item 
                         key={item.id}
                         id={item.id}
@@ -21,7 +21,8 @@ const ItemList = ({productsData, categoryUrl}) => {
                         price={item.price}
                         offer={item.offer ? item.offer[1] : null}
                         image={item.images[0]}
-                        alt={item.alt}/>   
+                        alt={item.alt}
+                        stock={item.stock}/>   
                         :
                         null
                         }
@@ -41,7 +42,8 @@ const ItemList = ({productsData, categoryUrl}) => {
                         price={item.price}
                         offer={item.offer ? item.offer[1] : null}
                         image={item.images[0]}
-                        alt={item.alt}/>   
+                        alt={item.alt}
+                        stock={item.stock}/>   
                     </>
                 )
             })

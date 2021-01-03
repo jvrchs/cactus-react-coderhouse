@@ -1,6 +1,6 @@
 .item-card {
     transition: ease all .3s;
-    width: 30rem;
+    width: 40rem;
     transform: scale(0.7);
 }
 
@@ -15,7 +15,7 @@
     &:hover{
         transform: translateY(-1rem);
         .card-img{
-            height: 35rem;
+            height: 27.5rem;
         }
     }
     .offer-icon {

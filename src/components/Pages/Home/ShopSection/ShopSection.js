@@ -1,30 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './ShopSection.scss';
-import products from '../../ItemListContainer/Item/products';
 import Item from '../../ItemListContainer/Item/Item';
 import Button from '../../../Button/Button';
+import {Link} from 'react-router-dom';
 
-const getProducts = new Promise((resolve,reject) => {
-    resolve(products);
-});
-
-const ShopSection = () => {
-    const[itemsData, setItemsData] = useState(false);
-
-    useEffect(() => {
-        getProducts.then((productsArr) => {
-            setItemsData(productsArr)
-        })
-    }, []);
+const ShopSection = ({productsData}) => {
 
     return (
         <>
-            {
-             itemsData ? 
             <section className="shop-section-container">
                 <h2 className="section-title">TIENDA</h2>
                 <div className="item-card-container">
-                    {itemsData.map((item, index) => {
+                    {productsData.map((item, index) => {
                         return(
                             <Item
                             key={item.id}
@@ -32,22 +19,24 @@ const ShopSection = () => {
                             title={item.title}
                             category={item.category}
                             price={item.price}
+                            offer={item.offer ? item.offer[1] : null}
                             image={item.images[0]}
-                            alt={item.alt}/>
+                            alt={item.alt}
+                            stock={item.stock}
+                            />
                         )
                     })}
                 </div>
                 <div className="shop-section-button">
-                    <Button buttonSize="btn--large" buttonStyle="btn--primary">Ver todo</Button>
+                    
+                    <Link to="/tienda">
+                        <Button buttonSize="btn--large" buttonStyle="btn--primary">
+                            Ver todo
+                        </Button>
+                    </Link>
                 </div>
             </section> 
-            :
-            <section>
-                <p>Cargando...</p>
-            </section>   
-            }
-
-        </>
+        </> 
     )
 }
 

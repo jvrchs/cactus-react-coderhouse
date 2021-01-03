@@ -15,8 +15,20 @@ const ItemListContainer = () => {
             }, 1000);     
         });
         getProducts.then((productsArr) => {
-            setProductsData(productsArr);
-        })  
+            setProductsData(
+                productsArr.sort((a, b) => {
+                    const itemA = a.title.toLowerCase();
+                    const itemB = b.title.toLowerCase();
+                    if (itemA < itemB) {
+                        return -1;
+                    }
+                    if (itemA > itemB) {
+                        return 1;
+                    }
+                    return 0;
+                })
+            );
+        }) 
     }, []);
 
     return(

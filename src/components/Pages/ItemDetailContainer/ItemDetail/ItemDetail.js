@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import Button from '../../../Button/Button';
 import ItemCount from '../../../ItemCount/ItemCount';
 
 const ItemDetail = ({ productsData, id }) => {
+
+    const [qty, setQty] = useState(0);
+    const [itemAdded, setItemAdded] = useState(0);
+
+    const onAdd = e => {
+        setQty(itemAdded)
+    }
+
     return(
         <>
             {
@@ -16,7 +25,11 @@ const ItemDetail = ({ productsData, id }) => {
                                 <li>Precio: {product.price}</li>
                                 <li>Descripción: {product.description}</li>
                             </ul>
-                            <ItemCount initial={0} stock={15}/>
+                            {qty ?
+                            <Button className="checkout-btn">Finalizar compra</Button>   
+                            :
+                            <ItemCount stockQty={product.stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
+                            }
                         </section>
                         :
                         null

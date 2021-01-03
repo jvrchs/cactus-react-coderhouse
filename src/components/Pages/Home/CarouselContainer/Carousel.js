@@ -32,11 +32,12 @@ const Carousel = ({slides}) => {
                                         {slide.textFirst}
                                         {slide.textSecond}
                                         <br/>
-                                        <Button buttonSize="btn--medium" buttonStyle="btn--outline">
-                                            <Link className="shop-btn" to='/tienda'>
+                                        
+                                        <Link className="shop-btn" to='/tienda'>
+                                            <Button buttonSize="btn--medium" buttonStyle="btn--outline">    
                                                 TIENDA
-                                            </Link>
-                                        </Button>
+                                            </Button>
+                                        </Link>
                                     </div>
                                 :
                                     <div className="header-container">

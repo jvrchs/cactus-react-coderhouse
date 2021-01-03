@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./Item.scss";
 import ItemCount from '../../../ItemCount/ItemCount';
 import {Link} from 'react-router-dom';
@@ -9,12 +9,18 @@ const Item = ({
     id,
     title,
     category,
-    description,
     price,
     offer,
     image,
-    alt
+    stock
 }) => {
+
+    const [qty, setQty] = useState(0);
+    const [itemAdded, setItemAdded] = useState(0);
+
+    const onAdd = e => {
+        setQty(itemAdded)
+    }
     
     return (
         <div className="item-card">
@@ -22,7 +28,7 @@ const Item = ({
                 <div className={`color-bg`}></div>
                 <div className="card-img" style={{"backgroundImage": `url(../media/img/products/${image})`}}></div>
                 <div className={offer != null ? 'offer-icon' : 'no-offer'}>
-                            <MdLocalOffer/>
+                    <MdLocalOffer/>
                 </div>
                 <div className="card-info">
                     <h3><Link to={`/item/${id}`}>{title}</Link></h3>
@@ -36,7 +42,7 @@ const Item = ({
                             <FaHeart/>
                         </div>
                     </div>
-                    <ItemCount initial={1} stock={20}/>
+                    <ItemCount stockQty={stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
                 </div>
             </div>
         </div>

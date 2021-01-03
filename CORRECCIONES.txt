@@ -7,5 +7,7 @@
 -Hacer loading
 -Carousel sea deslizando
 -Corrección counter solo debe permitir stock
--Hacer item card mas ancho
 -Seccion tienda inicio aleatoria
+-Añadir stock a cada producto.
+-Imagen Pack Huevo
+-Agrega stock en productos y dettalle
