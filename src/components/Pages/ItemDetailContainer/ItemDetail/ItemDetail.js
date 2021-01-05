@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import Button from '../../../Button/Button';
 import ItemCount from '../../../ItemCount/ItemCount';
+import ProductImageGallery from '../../../ProductImageGallery/ProductImageGallery';
+import './ItemDetail.scss'
 
 const ItemDetail = ({ productsData, id }) => {
 
     const [qty, setQty] = useState(0);
-    const [itemAdded, setItemAdded] = useState(0);
+    const [itemAdded, setItemAdded] = useState(1);
 
     const onAdd = e => {
         setQty(itemAdded)
@@ -19,17 +21,26 @@ const ItemDetail = ({ productsData, id }) => {
                     return(
                         product.id === id.itemId ?
                         <section className="item-detail-container" key={product.id}>
-                            <img src={"../media/img/products/" + product.images[0]} alt={product.alt}/>
-                            <h1>{product.title}</h1>
-                            <ul>
-                                <li>Precio: {product.price}</li>
-                                <li>Descripción: {product.description}</li>
-                            </ul>
-                            {qty ?
-                            <Button className="checkout-btn">Finalizar compra</Button>   
-                            :
-                            <ItemCount stockQty={product.stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
-                            }
+                            <ProductImageGallery imageArr={product.images} alt={product.alt} />
+                            <div className="item-detail-info-wrapper">
+                                <h1>{product.title.toUpperCase()}</h1>
+                                {product.offer[0] ?
+                                <>
+                                <p className="old-price-detail">{new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(product.price)}</p>
+                                <p className="new-price-detail">{new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(product.offer[1])}</p>
+                                </>
+                                :
+                                <p>{new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(product.price)}</p>
+                                }
+                                <hr/>
+                                <h2>CANTIDAD</h2>
+                                {qty ?
+                                <Button className="checkout-btn">Finalizar compra</Button>   
+                                :
+                                <ItemCount className='item-detail-counter' stockQty={product.stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
+                                }
+                                <p>Descripción: {product.description}</p>
+                            </div>
                         </section>
                         :
                         null

@@ -1,4 +1,4 @@
-@import "../../design-tokens/scss-variables.scss";
+@import "../../design-tokens/_scss-variables.scss";
 @import "../../design-tokens/css-variables.scss";
 
 .btn {
@@ -7,15 +7,13 @@
     outline: none;
     border: none;
     cursor: pointer;
-    align-self:flex-start;
 }
 
 .btn:hover {
-    padding: 0.8rem 2rem;
-    transition: all 0.3s ease-out;
     background: #fff;
-    color: #47BFA9;
+    color: var(--color-secondary);
     transition: 250ms;
+    border: solid 1px var(--color-secondary);
 }
 
 .btn--primary {
@@ -24,14 +22,16 @@
 
 .btn--secondary {
     background-color: var(--btn-secondary);
+
+
 }
 
 .btn--outline {
     background-color: transparent;
     color: #fff;
-    padding: 0.8rem 2rem;
+    padding: 8px 20px;
     border-radius: 0.4rem;
-    border: 0.15rem solid #fff;
+    border: 1.5px solid #fff;
     transition: all 0.3s ease-out;
 }
 

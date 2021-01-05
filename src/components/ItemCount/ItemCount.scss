@@ -1,25 +1,12 @@
 @import "../../design-tokens/_scss-variables.scss";
 @import "../../design-tokens/css-variables.scss";
 
-.item-count {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 100%;
-    padding: 0 5rem;
-}
-
-.counter-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 .counter-btn{
     background: transparent;
     border: none;
     cursor: pointer;
     width: 100%;
+    height: 100%;
     &:focus {
         outline: none;
     }
@@ -28,8 +15,74 @@
     }
 }
 
-.addToCart-btn {
-    align-self: center;
-    width: 100%;
-    margin-top: 1rem;
+
+.item-count-wrapper.card-item-counter {
+    display: flex;
+    flex-direction: column;
+
+    .counter {
+        display: flex;
+        width: 100%;
+        padding: 0 5rem;
+        p {
+            font-size: 2.2rem;
+        }
+    }
+
+    .counter-btn{
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        &:focus {
+            outline: none;
+        }
+    }
+    
+    .addToCart-btn {
+        align-self: center;
+        width: 100%;
+        margin-top: 1rem;
+        p {
+            font-size: 2.2rem;
+        }
+    }
+}
+
+.item-count-wrapper.item-detail-counter {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    justify-content: space-between;
+    .counter {
+        width: 30%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        table {
+            border-collapse: collapse;
+            border: solid #000 1px;
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            td {
+                border: solid #000 1px;
+                text-align: center;
+                &.minus-plus {
+                    width: 30%;
+                }
+                &.added-items {
+                    background-color: #fff;
+                    p {
+                        text-align: center;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+    .addToCart-btn {
+        width: 68%;
+    }
 }

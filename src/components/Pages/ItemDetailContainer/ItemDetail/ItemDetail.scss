@@ -1,0 +1,39 @@
+@import '../../../../design-tokens/_scss-variables.scss';
+@import '../../../../design-tokens/css-variables.scss';
+
+.item-detail-container {
+    margin-top: 8rem;
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.item-detail-info-wrapper {
+    width: 50%;
+    padding: 2rem 4rem;
+    background-color: #f9f9f9;
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h1+p {
+        width: 100%;
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .old-price-detail {
+        color: #000;
+        text-decoration: line-through;
+        text-align: left;
+    }
+    .new-price-detail {
+        color: red;
+        font-weight: 800;
+        text-align: left;
+    }
+    
+}

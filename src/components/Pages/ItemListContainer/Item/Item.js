@@ -16,7 +16,7 @@ const Item = ({
 }) => {
 
     const [qty, setQty] = useState(0);
-    const [itemAdded, setItemAdded] = useState(0);
+    const [itemAdded, setItemAdded] = useState(1);
 
     const onAdd = e => {
         setQty(itemAdded)
@@ -42,7 +42,7 @@ const Item = ({
                             <FaHeart/>
                         </div>
                     </div>
-                    <ItemCount stockQty={stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
+                    <ItemCount className='card-item-counter' stockQty={stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
                 </div>
             </div>
         </div>
