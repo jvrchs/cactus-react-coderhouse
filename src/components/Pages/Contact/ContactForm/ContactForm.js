@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ContactFormInputs from './ContactFormInputs';
 import ContactFormSuccess from './ContactFormSuccess';
+import './ContactForm.scss'
 
 const ContactForm = () => {
 
@@ -11,7 +12,7 @@ const ContactForm = () => {
     }
 
     return (
-        <div style={{marginTop: '8rem'}}>
+        <div>
             {!isSubmitted ? <ContactFormInputs submitForm={submitForm}/> : <ContactFormSuccess/> }
         </div>
     )

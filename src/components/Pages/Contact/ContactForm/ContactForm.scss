@@ -1,0 +1,37 @@
+@import "../../../../design-tokens/_scss-variables.scss";
+@import "../../../../design-tokens/css-variables.scss";
+
+.form-wrapper {
+    width: 100%;
+    font-size: 1.5rem;
+    .contact-form {
+        width: 100%;
+        margin: auto;
+        .form-inputs {
+            display: flex;
+            flex-direction: column;
+            .form-label {
+                font-weight: bold;
+                line-height: 2em;
+            }
+            .form-input {
+                height: 32px;
+                border: 1px #ddd solid;
+                padding: 0 1rem;
+                &.form-textarea {
+                    height: 150px;
+                    padding: 1rem;
+                }
+                &:focus{
+                    outline: none;
+                    box-shadow: 0 0 5px #ccc;
+                }
+            }
+            .contact-form-error {
+                font-size: 0.9em;
+                color: red;
+                line-height: 2em;
+            }
+        }
+    }
+}
