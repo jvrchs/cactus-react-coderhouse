@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../../../Button/Button';
 import ItemCount from '../../../ItemCount/ItemCount';
 import ProductImageGallery from '../../../ProductImageGallery/ProductImageGallery';
@@ -35,7 +36,7 @@ const ItemDetail = ({ productsData, id }) => {
                                 <hr/>
                                 <h2>CANTIDAD</h2>
                                 {qty ?
-                                <Button className="checkout-btn">Finalizar compra</Button>   
+                                <Link to="/cart"><Button className="checkout-btn">Finalizar compra</Button></Link>   
                                 :
                                 <ItemCount className='item-detail-counter' stockQty={product.stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
                                 }
