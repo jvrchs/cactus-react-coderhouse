@@ -1,0 +1,12 @@
+@import "../../../../design-tokens/_scss-variables";
+@import "../../../../design-tokens/css-variables.scss";
+
+.item-list-cards-container {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    grid-auto-rows: 38rem;
+}

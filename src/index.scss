@@ -11,6 +11,7 @@
 html {
   /* 1rem = 10px */
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
@@ -33,12 +34,13 @@ p {
 
 .section-title {
   font-size: $h1-title-size;
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 13rem;
   span {
-    width: 100%;
+    width: -webkit-fill-available;
     height: 1px;
     background-color: #000;
     opacity: 0.2;
@@ -49,11 +51,12 @@ p {
       margin-left: 1rem;
     }
   }
-  h1 {
+  h1, h2 {
       font-size: 1em;
+      text-align: center;
+      width: 100%;
     }
 }
-
 
 .section-box {
   margin-top: $section-margin-top;
@@ -61,7 +64,11 @@ p {
 }
 
 .section-container-box {
-  padding: 5rem;
+  padding: 5rem 5rem 0 5rem;
+}
+
+.item-list-container-box {
+  padding: 5rem 0 0 0;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,0 +1,151 @@
+@import "../../../design-tokens/_scss-variables";
+@import "../../../design-tokens/css-variables.scss";
+
+.item-card {
+    transition: ease all .3s;
+    width: 380px;
+    transform: scale(0.7);
+}
+
+.wrapper {
+    margin: 6rem 1rem 1rem;
+    padding-top: 30rem;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 0 2rem 1rem rgba(25,25,25,.1);
+    transition: ease all .3s;
+    height: 480px;
+    &:hover{
+        transform: translateY(-1rem);
+        .card-img{
+            height: 27.5rem;
+        }
+    }
+    .offer-icon {
+        position: absolute;
+        top: 0;
+        right: -1.8rem;
+        font-size: 5.5rem;
+        z-index: 1;
+        color: #fff;
+    }
+    .cactus-offer {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.3rem;
+        font-size: 2.5rem;
+        z-index: 2;
+        color: var(--color-primary);
+        transform: rotate(316deg);
+    }
+    .heart{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1rem;
+        &:hover {
+            cursor: pointer;
+        }
+        svg,path,circle{
+            stroke: #000;
+            stroke-width: 1.7rem;
+            fill:transparent;
+            transition-delay: .2s;
+            font-size: 6rem;
+        }
+    }
+}
+
+.color-bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20rem;
+    background-color: #bfc5be;  
+}
+
+.card-img {
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: calc(100% - 24rem);
+    width: 100%;
+    height: 25rem;
+    transition: ease all .3s;
+    z-index: 10;
+}
+
+.card-info {
+    display: block;
+    padding: 2rem 1rem 0.5rem 1rem;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    h3 {
+        font-size: 2rem;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+    p {
+        width: 100%;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+}
+
+.action {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    margin-top: 1.5rem;
+}
+
+.price-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    .price {
+        font-size: 1.8rem;
+        color: #000;
+        text-align: left;
+        &.old-price {
+            color: #000;
+            font-size: 1.8rem;
+            text-decoration: line-through;
+            text-align: left;
+        }
+        &.new-price{
+            color: red;
+            font-size:1.8rem;
+            font-weight: 800;
+        }
+    }
+}
+
+.no-offer {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .item-card {
+        width: 100%;
+    }
+}

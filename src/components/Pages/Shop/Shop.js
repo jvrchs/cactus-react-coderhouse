@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemListContainer from '../ItemListContainer/ItemListContainer';
+import ItemListContainer from '../../widgets/ItemListContainer/ItemListContainer';
 
 const Shop = () => {
     return (

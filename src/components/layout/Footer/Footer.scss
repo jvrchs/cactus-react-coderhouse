@@ -1,0 +1,51 @@
+@import "../../../design-tokens/_scss-variables.scss";
+@import "../../../design-tokens/css-variables.scss";
+
+//Para empujar footer hasta el final
+.App {
+    padding-bottom: 500px;
+    min-height: calc(100% - 500px);
+    position: relative;
+  }
+
+.footer-section {
+background-color: var(--color-secondary);
+font-size: 1.6rem;
+padding: 5rem;
+position: absolute;
+width: 100%;
+height: 500px;
+bottom: 0;
+left: 0;
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-auto-rows: 23rem;
+        h3 {
+            color: #fff;
+            font-size: 0.9em;
+        }
+        li {
+            list-style: none;
+            margin-bottom: 0.5rem;
+            a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 0.9em;
+                &:hover {
+                    color: gray;
+                    transition: 0.1s ease-in-out;
+                }
+            }
+        }
+        svg {
+            color: #fff;
+            font-size: 1.3em;
+            &:hover {
+                color: gray;
+            }
+            text-decoration: none;
+        }
+    }
+}
+

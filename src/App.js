@@ -1,33 +1,36 @@
 import React from 'react';
-import './components/NavBar/NavBar';
-import NavBar from './components/NavBar/NavBar';
-import Shop from './components/Pages/Shop/Shop';
-import ItemListContainer from './components/Pages/ItemListContainer/ItemListContainer';
-import Home from './components/Pages/Home/Home';
-import About from './components/Pages/About/About';
-import Contact from './components/Pages/Contact/Contact';
-import Cart from './components/Pages/Cart/Cart';
-import MyAccount from './components/Pages/MyAccount/MyAccount';
+import './components/widgets/NavBar/NavBar';
+import Shop from './components/pages/Shop/Shop';
+import Home from './components/pages/Home/Home';
+import About from './components/pages/About/About';
+import Contact from './components/pages/Contact/Contact';
+import Cart from './components/pages/Cart/Cart';
+import MyAccount from './components/pages/MyAccount/MyAccount';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import ItemDetailContainer from './components/Pages/ItemDetailContainer/ItemDetailContainer';
-import Wishlist from './components/Pages/Wishlist/Wishlist';
+import ItemPage from './components/pages/ItemPage/ItemPage';
+import Wishlist from './components/pages/Wishlist/Wishlist';
+import Footer from './components/layout/Footer/Footer';
+import Header from './components/layout/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavBar/>
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/tienda" component={Shop}/>
-          <Route path="/nosotros" component={About}/>
-          <Route path="/contacto" component={Contact}/>
-          <Route path='/mi-cuenta' component={MyAccount}/>
-          <Route path="/carro" component={Cart}/>
-          <Route path="/mi-cuenta/wishlist" component={Wishlist}/>
-          <Route path="/category/:categoryId" component={ItemListContainer}/>
-          <Route path="/item/:itemId" component={ItemDetailContainer}/>
-        </Switch>
+        <Header/>
+        <main>
+          <Switch>
+            <Route path="/" exact component={Home}/>
+            <Route path="/tienda" component={Shop}/>
+            <Route path="/nosotros" component={About}/>
+            <Route path="/contacto" component={Contact}/>
+            <Route path='/mi-cuenta' component={MyAccount}/>
+            <Route path="/carro" component={Cart}/>
+            <Route path="/mi-cuenta/wishlist" component={Wishlist}/>
+            <Route path="/category/:categoryId" component={Shop}/>
+            <Route path="/item/:itemId" component={ItemPage}/>
+          </Switch>
+        </main>
+        <Footer/>
       </div>
     </BrowserRouter>
   );

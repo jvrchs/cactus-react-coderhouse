@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactForm from './ContactForm/ContactForm';
 import './Contact.scss';
+import FormContainer from '../../widgets/FormContainer/FormContainer';
 
 const Contact = () => {
     return (
@@ -23,7 +23,7 @@ const Contact = () => {
                     <p>Calle ###, Viña del Mar, Valparaíso, Chile</p>
                 </div>
                 <br/>
-                <ContactForm/>
+                <FormContainer formName='contact' btnLabel="Enviar"/>
             </div>
         </section>
     )

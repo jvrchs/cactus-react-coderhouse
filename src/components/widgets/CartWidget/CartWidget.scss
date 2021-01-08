@@ -1,0 +1,13 @@
+@import "../../../design-tokens/_scss-variables.scss";
+@import "../../../design-tokens/css-variables.scss";
+
+.cart-bi-icon {
+    color:#fff ;
+    font-size: 3rem;
+}
+
+@media screen and (max-width: 600px) {
+    .cart-bi-icon  {
+        font-size: $nav-font-size-mobile;
+    }
+}
