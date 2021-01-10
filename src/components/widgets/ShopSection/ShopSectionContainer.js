@@ -23,8 +23,7 @@ const ShopSectionContainer = () => {
 
             for (let j = 0; j < randomProductsArr.length; j++) {
                 productsArr.push(randomProductsArr[j]);
-            }
-            console.log(productsArr);
+            };
         })
     }, []);
 

@@ -11,7 +11,7 @@ const formsData = {
         {
             key: 'email',
             tag: 'input',
-            type: 'email',
+            type: 'text',
             required: true,
             cName: 'form-input',
             label: 'Correo Electrónico (requerido)'
@@ -52,7 +52,7 @@ const formsData = {
         {
             key: 'email',
             tag: 'input',
-            type: 'email',
+            type: 'text',
             required: true,
             cName: 'form-input',
             label: 'Correo electrónico'
@@ -64,13 +64,18 @@ const formsData = {
             required: true,
             cName: 'form-input',
             label: 'Contraseña'
+        },
+        {
+            key: 'submit-btn',
+            type: 'submit',
+            className: 'form-input-btn'
         }
     ],
     signUp: [
         {
             key: 'email',
             tag: 'input',
-            type: 'email',
+            type: 'text',
             required: true,
             cName: 'form-input',
             label: 'Correo electrónico'
@@ -90,6 +95,11 @@ const formsData = {
             required: true,
             cName: 'form-input',
             label: 'Confirme contraseña'
+        },
+        {
+            key: 'submit-btn',
+            type: 'submit',
+            className: 'form-input-btn'
         }
     ]    
 };

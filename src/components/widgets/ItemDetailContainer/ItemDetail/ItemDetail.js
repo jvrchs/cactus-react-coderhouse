@@ -3,15 +3,24 @@ import { Link } from 'react-router-dom';
 import Button from '../../Button/Button';
 import ItemCount from '../../ItemCount/ItemCount';
 import ProductImageGallery from '../../ProductImageGallery/ProductImageGallery';
-import './ItemDetail.scss'
+import './ItemDetail.scss';
 
-const ItemDetail = ({ productsData, id }) => {
+const ItemDetail = (props) => {
+
+    const {productsData, id, addItem, removeItem, clearCart, isInCart} = props;
+
+    const [itemId, setItemId] = useState(id.itemId)
 
     const [qty, setQty] = useState(0);
+
     const [itemAdded, setItemAdded] = useState(1);
 
     const onAdd = e => {
-        setQty(itemAdded)
+        setQty(itemAdded);
+    };
+
+    const setItems = () => {
+        addItem(itemId, qty)
     }
 
     return(
@@ -36,9 +45,15 @@ const ItemDetail = ({ productsData, id }) => {
                                     <hr/>
                                     <h2>CANTIDAD</h2>
                                     {qty ?
-                                    <Link to="/cart"><Button className="checkout-btn">Finalizar compra</Button></Link>   
+                                    <Link to="/cart"><Button className="checkout-btn" onClick={setItems}>Finalizar compra</Button></Link>   
                                     :
-                                    <ItemCount className='item-detail-counter' stockQty={product.stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
+                                    <ItemCount 
+                                    className='item-detail-counter' 
+                                    stockQty={product.stock} 
+                                    onAdd={onAdd} 
+                                    itemAdded={itemAdded} 
+                                    setItemAdded={setItemAdded}
+                                    addItem={addItem}/> 
                                     }
                                     <p>Descripción: {product.description}</p>
                                 </div>

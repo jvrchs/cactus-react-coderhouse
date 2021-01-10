@@ -11,28 +11,31 @@ import ItemPage from './components/pages/ItemPage/ItemPage';
 import Wishlist from './components/pages/Wishlist/Wishlist';
 import Footer from './components/layout/Footer/Footer';
 import Header from './components/layout/Header/Header';
+import CartContext from './components/context/CartContext';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header/>
-        <main>
-          <Switch>
-            <Route path="/" exact component={Home}/>
-            <Route path="/tienda" component={Shop}/>
-            <Route path="/nosotros" component={About}/>
-            <Route path="/contacto" component={Contact}/>
-            <Route path='/mi-cuenta' component={MyAccount}/>
-            <Route path="/carro" component={Cart}/>
-            <Route path="/mi-cuenta/wishlist" component={Wishlist}/>
-            <Route path="/category/:categoryId" component={Shop}/>
-            <Route path="/item/:itemId" component={ItemPage}/>
-          </Switch>
-        </main>
-        <Footer/>
-      </div>
-    </BrowserRouter>
+    <CartContext>      
+      <BrowserRouter>
+        <div className="App">
+          <Header/>
+          <main>
+            <Switch>
+              <Route path="/" exact component={Home}/>
+              <Route path="/tienda" component={Shop}/>
+              <Route path="/nosotros" component={About}/>
+              <Route path="/contacto" component={Contact}/>
+              <Route path='/mi-cuenta' component={MyAccount}/>
+              <Route path="/carro" component={Cart}/>
+              <Route path="/mi-cuenta/wishlist" component={Wishlist}/>
+              <Route path="/category/:categoryId" component={Shop}/>
+              <Route path="/item/:itemId" component={ItemPage}/>
+            </Switch>
+          </main>
+          <Footer/>
+        </div>
+      </BrowserRouter>
+    </CartContext>
   );
 }
 

@@ -64,7 +64,10 @@ p {
 }
 
 .section-container-box {
-  padding: 5rem 5rem 0 5rem;
+  padding: 4rem 4rem 0 4rem;
+  &.home-container {
+    padding: 0 4rem;
+  }
 }
 
 .item-list-container-box {
