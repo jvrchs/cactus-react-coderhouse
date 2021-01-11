@@ -7,28 +7,14 @@ import './ItemDetail.scss';
 
 const ItemDetail = (props) => {
 
-    const {productsData, id, addItem, removeItem, clearCart, isInCart} = props;
-
-    const [itemId, setItemId] = useState(id.itemId)
-
-    const [qty, setQty] = useState(0);
-
-    const [itemAdded, setItemAdded] = useState(1);
-
-    const onAdd = e => {
-        setQty(itemAdded);
-    };
-
-    const setItems = () => {
-        addItem(itemId, qty)
-    }
+    const {productsData, id, qty, itemAdded, onAdd, setItemsToCart, setItemAdded, addItem} = props;
 
     return(
         <>
             {
                 productsData.map(product => {
                     return(
-                        product.id === id.itemId ?
+                        product.id === id ?
                         <section className="item-detail-section section-box">
                             <div className="item-detail-container section-container-box" key={product.id}>
                                 <ProductImageGallery imageArr={product.images} alt={product.alt} />
@@ -45,7 +31,7 @@ const ItemDetail = (props) => {
                                     <hr/>
                                     <h2>CANTIDAD</h2>
                                     {qty ?
-                                    <Link to="/cart"><Button className="checkout-btn" onClick={setItems}>Finalizar compra</Button></Link>   
+                                    <Link to="/cart"><Button className="checkout-btn" onClick={setItemsToCart}>Finalizar compra</Button></Link>   
                                     :
                                     <ItemCount 
                                     className='item-detail-counter' 
