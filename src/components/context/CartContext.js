@@ -14,7 +14,13 @@ const CartContext = ({children}) => {
         }
 
         for (let i = 0; i < cart.length; i++) {
-            tempArr.push(cart[i]); 
+            if (cart.length !== 0) {
+                if (id !== cart[i].itemId) {
+                    tempArr.push(cart[i]); 
+                } else {
+                    itemObject.quantity = qty + cart[i].quantity
+                } 
+            }
         }
         tempArr.push(itemObject);
         setCart(tempArr);    
