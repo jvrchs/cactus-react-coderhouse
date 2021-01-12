@@ -26,7 +26,7 @@ const useForm = (formValues, submitForm, validateForm) => {
         if(Object.keys(errors).length === 0 && isSubmiting) {
             submitForm();
         }
-    }, [errors])
+    }, [errors, isSubmiting, submitForm])
 
     return { values, errors, handleChange, handleSubmit }
 }

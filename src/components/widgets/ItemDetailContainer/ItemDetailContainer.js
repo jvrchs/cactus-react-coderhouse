@@ -8,20 +8,17 @@ const ItemDetailContainer = () => {
 
     const[productsData, setProductsData] = useState(false);
 
-    const [qty, setQty] = useState(0);
-
     const [itemAdded, setItemAdded] = useState(1);
+        
+    const [qty, setQty] = useState(0);
 
     const idUrlParam = useParams();
 
-    const {addItem} = useContext(context);
+    const {clpCurrencyFormat, cart, addItem} = useContext(context);
 
-    const onAdd = () => {
-        setQty(itemAdded);
-    };
-
-    const setItemsToCart = () => {
-        addItem(idUrlParam.itemId, qty)
+    const onAdd = (itemAdded, id) => {
+        setQty(itemAdded)
+        addItem(id, itemAdded)
     }
 
     useEffect(() => {
@@ -40,13 +37,12 @@ const ItemDetailContainer = () => {
                 <ItemDetail 
                 productsData={productsData} 
                 id={idUrlParam.itemId} 
-                qty={qty}
-                setQty={setQty}
                 itemAdded={itemAdded}
                 setItemAdded={setItemAdded}
                 onAdd={onAdd}
-                setItemsToCart={setItemsToCart}
-                addItem={addItem}
+                clpCurrencyFormat={clpCurrencyFormat}
+                cart={cart}
+                qty={qty}
                 />
                 :
                 <p>Cargando producto...</p>

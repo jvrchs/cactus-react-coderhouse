@@ -5,3 +5,5 @@
 -Poner los route en main
 -Hacer carpeta rutas
 -Hacer loading
+-Hacer componente section para las secciones
+-Usar [...] al agregar items

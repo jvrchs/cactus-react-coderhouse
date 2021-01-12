@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import CartWidget from '../CartWidget/CartWidget';
 import { RiCactusLine } from "react-icons/ri";
-import { FaCaretDown } from "react-icons/fa"
+import { FaCaretDown } from "react-icons/fa";
 import './NavBar.scss'
 import {Link, useLocation} from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
@@ -93,12 +93,12 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className='cart-wishlist-container'>
-                    <Link to="/carro">
-                        <CartWidget/>
-                    </Link>
-                    <Link to="/mi-cuenta/wishlist">
-                        <FaHeart/>
-                    </Link>
+                        <Link to="/carro">
+                            <CartWidget/>
+                        </Link>
+                        <Link to="/mi-cuenta/wishlist">
+                            <FaHeart/>
+                        </Link>
                 </div>
                 <div className='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>

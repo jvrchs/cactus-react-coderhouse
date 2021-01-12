@@ -6,6 +6,27 @@
     font-size: 3rem;
 }
 
+.cart-widget {
+    position: relative;
+    .cart-widget-count {
+        position: absolute;
+        top: -3px;
+        right: -7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .cart-circle-icon {
+            color: red;
+            font-size: 1.8rem;
+        }
+        .cart-widget-number {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+}
+
 @media screen and (max-width: 600px) {
     .cart-bi-icon  {
         font-size: $nav-font-size-mobile;

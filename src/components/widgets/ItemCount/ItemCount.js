@@ -4,10 +4,11 @@ import Button from '../Button/Button';
 
 const ItemCount = ({
     className,
-    stockQty, 
-    onAdd, 
+    stockQty,
     itemAdded, 
-    setItemAdded}) => {
+    setItemAdded,
+    id,
+    onAdd}) => {
 
     const decrease = () => {
         if(itemAdded <= 1) {
@@ -26,29 +27,31 @@ const ItemCount = ({
     return (
         <>
         {className === 'item-detail-counter' ?
-        <div className={`item-count-wrapper ${className}`}>
-            <div className="counter">
-                <table>
-                    <tr>
-                        <td className="minus-plus"><button className="counter-btn" onClick={decrease}>-</button></td>
+            <div className={`item-count-wrapper ${className}`}>
+                <div className="counter">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td className="minus-plus"><button className="counter-btn" onClick={decrease}>-</button></td>
 
-                        <td className="added-items"><p>{itemAdded}</p></td>
+                                <td className="added-items"><p>{itemAdded}</p></td>
 
-                        <td className="minus-plus"><button className="counter-btn" onClick={increase}>+</button></td>
-                    </tr>
-                </table>
+                                <td className="minus-plus"><button className="counter-btn" onClick={increase}>+</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <Button className="addToCart-btn" onClick={() => onAdd(itemAdded, id)}>Añadir al carro</Button>   
             </div>
-            <Button className="addToCart-btn" onClick={onAdd}>Añadir al carro</Button>   
-        </div>
-        :
-        <div className={`item-count-wrapper ${className}`}>
-            <div className="counter">
-                <button className="counter-btn" onClick={decrease}><p>-</p></button>
-                <p>{itemAdded}</p>
-                <button className="counter-btn" onClick={increase}><p>+</p></button>
+            :
+            <div className={`item-count-wrapper ${className}`}>
+                <div className="counter">
+                    <button className="counter-btn" onClick={decrease}><p>-</p></button>
+                    <p>{itemAdded}</p>
+                    <button className="counter-btn" onClick={increase}><p>+</p></button>
+                </div>
+                <button className="counter-btn addToCart-btn" onClick={onAdd}><p>Añadir al carrito</p></button>
             </div>
-            <button className="counter-btn addToCart-btn" onClick={onAdd}><p>Añadir al carrito</p></button>
-        </div>
         }
         </>
     )

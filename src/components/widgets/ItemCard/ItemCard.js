@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import "./ItemCard.scss";
 import ItemCount from '../ItemCount/ItemCount';
 import {Link} from 'react-router-dom';
 import {MdLocalOffer} from 'react-icons/md';
 import {FaHeart} from 'react-icons/fa';
 import { RiCactusLine } from "react-icons/ri";
+import {context} from '../../context/context';
 
 const Item = ({
     id,
@@ -16,11 +17,12 @@ const Item = ({
     stock
 }) => {
 
-    const [qty, setQty] = useState(0);
     const [itemAdded, setItemAdded] = useState(1);
 
-    const onAdd = e => {
-        setQty(itemAdded)
+    const {addItem} = useContext(context)
+
+    const onAdd = () => {
+        addItem(id, itemAdded)
     }
     
     return (
@@ -44,7 +46,7 @@ const Item = ({
                             <FaHeart/>
                         </div>
                     </div>
-                    <ItemCount className='card-item-counter' stockQty={stock} onAdd={onAdd} itemAdded={itemAdded} setItemAdded={setItemAdded}/> 
+                    <ItemCount className='card-item-counter' stockQty={stock} itemAdded={itemAdded} setItemAdded={setItemAdded} itemId={id} onAdd={onAdd}/> 
                 </div>
             </div>
         </div>

@@ -8,15 +8,15 @@ import './Form/Form.scss'
 
 const FormContainer = ({formName, btnLabel}) => {
 
+    const formValues = {};
+
+    for(let i = 0; i < formsData[formName].length; ++i){
+        formValues[formsData[formName][i].key] = ""
+    }
+    
     const submitForm = () => {
         setIsSubmitted(true);
     }
-
-    const formValues = {};
-
-    formsData[formName].map((input) => {
-        formValues[input.key] = ""
-    });
 
     const [isSubmited, setIsSubmitted] = useState(false);
 

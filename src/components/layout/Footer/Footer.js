@@ -71,8 +71,8 @@ const Footer = () => {
                     </div>
                     <br/>
                     <div className="footer-social-links">
-                        <a href="https://www.instagram.com/" target="_blank"><GrInstagram/></a>
-                        <a href="https://www.facebook.com/" target="_blank"><GrFacebookOption/></a>
+                        <a href="https://www.instagram.com/"  rel="noreferrer" target="_blank"><GrInstagram/></a>
+                        <a href="https://www.facebook.com/"  rel="noreferrer"  target="_blank"><GrFacebookOption/></a>
                     </div>
                 </div>
                 <div className="footer-contact-wrapper">

@@ -14,32 +14,25 @@ const ItemList = ({productsData, categoryUrl, location}) => {
                 </div>
                 <div className="item-list-cards-container">
                     {categoryUrl.categoryId ? 
-                    productsData.map((item, index) => {
-                        return (
-                            <>
-                                {
-                                item.categoryPathName === categoryUrl.categoryId ?
-                                <ItemCard 
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                category={item.category}
-                                description={item.description}
-                                price={item.price}
-                                offer={item.offer ? item.offer[1] : null}
-                                image={item.images[0]}
-                                alt={item.alt}
-                                stock={item.stock}/>   
-                                :
-                                null
-                                }
-                            </>
+                    productsData.filter(item => item.categoryPathName === categoryUrl.categoryId).map((item) => {
+                        return(
+                            <ItemCard 
+                            key={item.id}
+                            id={item.id}
+                            title={item.title}
+                            category={item.category}
+                            description={item.description}
+                            price={item.price}
+                            offer={item.offer ? item.offer[1] : null}
+                            image={item.images[0]}
+                            alt={item.alt}
+                            stock={item.stock}
+                            />   
                         )
                     })
                     :
-                    productsData.map((item, index) => {
+                    productsData.map((item) => {
                         return (
-                            <>
                                 <ItemCard 
                                 key={item.id}
                                 id={item.id}
@@ -51,7 +44,6 @@ const ItemList = ({productsData, categoryUrl, location}) => {
                                 image={item.images[0]}
                                 alt={item.alt}
                                 stock={item.stock}/>   
-                            </>
                         )
                     })
                     }

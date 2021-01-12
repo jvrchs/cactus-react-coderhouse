@@ -9,7 +9,7 @@ const ProductImageGallery = ({alt, imageArr}) => {
     return (
         <div className="product-gallery-wrapper">
             <div className="selected-image">
-                <img src={`/media/img/products/${selectedImg}`} />
+                <img src={`/media/img/products/${selectedImg}`} alt={alt} />
             </div>
             <div className="product-gallery">
                 {imageArr.map((img, index)=> {
