@@ -8,12 +8,19 @@ import { Link } from 'react-router-dom';
 
 const Cart = () => {
     
-    const {cart} = useContext(context);
+    const {cart, addItem, updateCart, tempCart, setTempCart} = useContext(context);
 
     const [cartData, setCartData] = useState([]);
 
     const[total, setTotal] = useState(0);
-  
+
+    const [qty, setQty] = useState(0);
+
+    const onAdd = (itemAdded, id) => {
+        setQty(itemAdded)
+        addItem(id, itemAdded)
+    }
+
     useEffect(() => {
 
         let cartDataArr = [];
@@ -31,7 +38,7 @@ const Cart = () => {
                 newTotal += tempProduct.offer[1] * tempProduct.quantity
 
             cartDataArr.push(tempProduct)
-        }    
+        }  
 
         setCartData(cartDataArr)
 
@@ -51,8 +58,9 @@ const Cart = () => {
                 <br/>
                 {cartData.length ? 
                     <>
-                        <CartInfo cartData={cartData} context={context}/>
+                        <CartInfo cartData={cartData} context={context} onAdd={onAdd} setTempCart={setTempCart} tempCart={tempCart}/>
                         <CartTotal total={total} context={context}/>
+                        <Button>Actualizar el carro</Button>
                     </>   
                     :
                     <>

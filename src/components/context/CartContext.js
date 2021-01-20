@@ -5,9 +5,27 @@ const CartContext = ({children}) => {
 
     const [cart, setCart] = useState([]);
 
+    const [tempCart, setTempCart] = useState(cart);
+
     const clpCurrencyFormat = (price) => {
         return new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(price)
     } 
+
+    const cartSortedByName = cart => {
+        const orderedCart = cart.sort((a, b) => {
+            const itemA = a.itemId.toLowerCase();
+            const itemB = b.itemId.toLowerCase();  
+            if (itemA < itemB) {
+                return -1
+            }
+            if (itemA > itemB) {
+                return 1
+            }
+            return 0
+        })
+     
+        setCart(orderedCart)
+    }
 
     const addItem = (id, qty) => {
 
@@ -30,12 +48,26 @@ const CartContext = ({children}) => {
         
         tempArr.push(itemObject);
 
-        setCart(tempArr);    
+        cartSortedByName(tempArr);    
     } 
 
     const removeItem = id => {
         const tempArr = cart.filter(item => item.itemId !== id);
-        setCart(tempArr);
+        cartSortedByName(tempArr); 
+    }
+
+    const updateCart = (id, newQty) => {
+
+        let tempArr = cart.filter(item => item.itemId !== id);
+
+        const itemObject = {
+            itemId: id,
+            quantity: newQty.count
+        };
+        
+        tempArr.push(itemObject);
+        
+        cartSortedByName(tempArr); 
     }
 
     const clearCart = () => {
@@ -48,7 +80,7 @@ const CartContext = ({children}) => {
     }
 
     return (
-        <Provider value={{cart, setCart, addItem, removeItem, clearCart, isInCart, clpCurrencyFormat}}>
+        <Provider value={{cart, setCart, addItem, removeItem, clearCart, isInCart, clpCurrencyFormat, updateCart, tempCart}}>
             {children}
         </Provider>
     )   

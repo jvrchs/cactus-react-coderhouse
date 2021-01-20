@@ -15,7 +15,7 @@ const ShopSection = ({productsData}) => {
                 <span></span>
             </div>
             <div className="item-card-container">
-                {productsData.map((item, index) => {
+                {productsData.map((item) => {
                     return(
                         <ItemCard
                         key={item.id}

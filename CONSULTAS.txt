@@ -1,1 +1,0 @@
-- Cuando quiero traer información de otro archivos ¿siempre hacerlo con promises?

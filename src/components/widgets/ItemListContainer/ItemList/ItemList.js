@@ -14,13 +14,13 @@ const ItemList = ({productsData, categoryUrl, location}) => {
                 </div>
                 <div className="item-list-cards-container">
                     {categoryUrl.categoryId ? 
-                    productsData.filter(item => item.categoryPathName === categoryUrl.categoryId).map((item) => {
+                    productsData.filter(item => item.categoryId === categoryUrl.categoryId).map((item) => {
                         return(
                             <ItemCard 
-                            key={item.id}
-                            id={item.id}
-                            title={item.title}
-                            category={item.category}
+                            key={item.itemId}
+                            id={item.itemId}
+                            title={item.itemName}
+                            category={item.categoryName}
                             description={item.description}
                             price={item.price}
                             offer={item.offer ? item.offer[1] : null}
@@ -34,10 +34,10 @@ const ItemList = ({productsData, categoryUrl, location}) => {
                     productsData.map((item) => {
                         return (
                                 <ItemCard 
-                                key={item.id}
-                                id={item.id}
-                                title={item.title}
-                                category={item.category}
+                                key={item.itemId}
+                                id={item.itemId}
+                                title={item.itemName}
+                                category={item.categoryName}
                                 description={item.description}
                                 price={item.price}
                                 offer={item.offer ? item.offer[1] : null}

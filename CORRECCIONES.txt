@@ -1,9 +1,0 @@
--navbar mobile
--pedir por promise sección txtimg
--Al hacer click en corazón debe aparecer alerta que se añadió a favoritos
--márgenes páginas
--Poner los route en main
--Hacer carpeta rutas
--Hacer loading
--Hacer componente section para las secciones
--Usar [...] al agregar items

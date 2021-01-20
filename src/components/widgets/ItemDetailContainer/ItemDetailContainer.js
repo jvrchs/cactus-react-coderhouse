@@ -3,6 +3,7 @@ import ItemDetail from './ItemDetail/ItemDetail';
 import products from '../../data/products';
 import {useParams} from 'react-router-dom';
 import {context} from '../../context/context';
+import {getFirestore} from '../../firebase/firebase';
 
 const ItemDetailContainer = () => {
 
@@ -22,11 +23,20 @@ const ItemDetailContainer = () => {
     }
 
     useEffect(() => {
-        const getProducts = new Promise((resolve, reject) => {
-            resolve(products);    
-        });
-        getProducts.then((productsArr) => {
-            setProductsData(productsArr);
+        const db = getFirestore();
+        const itemsCollection = db.collection('Items');
+        const query = itemsCollection.get();
+
+        query
+        .then((response) => {
+            let tempArr = [];
+            response.docs.forEach(doc => {
+                tempArr.push(doc.data())
+            });
+            setProductsData(tempArr)
+        })
+        .catch((reject) => {
+            console.log(reject)
         })
     }, []);
 

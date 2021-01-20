@@ -18,7 +18,7 @@ const CategoriesSection = ({categoriesData}) => {
                             <div className="category-hover-wrapper">
                                 <div className="category-hover"></div>
                             </div>
-                            <img src={`/media/img/categories/${category.image}`} alt={category.title}/>
+                            <img src={`media/img/categories/${category.image}`} alt={category.title}/>
                             <div className="category-info">
                                 <p><b>{category.title}</b></p>
                                 <div className='category-btn-wrapper'>

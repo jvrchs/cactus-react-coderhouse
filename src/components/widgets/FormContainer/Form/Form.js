@@ -10,7 +10,7 @@ const Form = ({
     btnLabel,
     errors}) => {
 
-        const formName = formsName;
+    const formName = formsName;
 
     return (
         <div className='form-wrapper'>

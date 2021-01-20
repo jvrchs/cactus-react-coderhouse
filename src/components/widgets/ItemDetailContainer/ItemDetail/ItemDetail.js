@@ -14,11 +14,11 @@ const ItemDetail = (props) => {
             {
                 productsData.map(product => {
                     return(
-                        product.id === id ?
-                            <div className="item-detail-container section-container-box" key={product.id}>
+                        product.itemId === id ?
+                            <div className="item-detail-container section-container-box" key={product.itemId}>
                                 <ProductImageGallery imageArr={product.images} alt={product.alt} />
                                 <div className="item-detail-info-wrapper">
-                                    <h1>{product.title.toUpperCase()}</h1>
+                                    <h1>{product.itemName.toUpperCase()}</h1>
                                     {product.offer[0] ?
                                     <>
                                     <p className="old-price-detail">{clpCurrencyFormat(product.price)}</p>

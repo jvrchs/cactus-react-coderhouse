@@ -19,7 +19,7 @@ const Item = ({
 
     const [itemAdded, setItemAdded] = useState(1);
 
-    const {addItem} = useContext(context)
+    const {addItem, clpCurrencyFormat} = useContext(context)
 
     const onAdd = () => {
         addItem(id, itemAdded)
@@ -29,7 +29,7 @@ const Item = ({
         <div className="item-card">
             <div className="wrapper">
                 <div className={`color-bg`}></div>
-                <div className="card-img" style={{"backgroundImage": `url(../media/img/products/${image})`}}></div>
+                <div className="card-img" style={{"backgroundImage": `url(media/img/products/${image})`}}></div>
                 <div className={offer != null ? 'offer-icon' : 'no-offer'}>
                     <MdLocalOffer/>
                     <RiCactusLine className='cactus-offer'/>
@@ -39,8 +39,8 @@ const Item = ({
                     <p className="category">{category}</p>
                     <div className="action">
                         <div className="price-group">
-                            <p className={offer != null ? 'price old-price' : 'price' }>{new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(price)}</p>
-                            <p className={offer != null ? 'price new-price' : 'no-offer' }>{new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(offer)}</p>
+                            <p className={offer != null ? 'price old-price' : 'price' }>{clpCurrencyFormat(price)}</p>
+                            <p className={offer != null ? 'price new-price' : 'no-offer' }>{clpCurrencyFormat(offer)}</p>
                         </div>
                         <div className="heart">
                             <FaHeart/>

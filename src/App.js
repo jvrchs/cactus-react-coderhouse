@@ -6,17 +6,19 @@ import About from './components/pages/About/About';
 import Contact from './components/pages/Contact/Contact';
 import Cart from './components/pages/Cart/Cart';
 import MyAccount from './components/pages/MyAccount/MyAccount';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {HashRouter, Switch, Route} from 'react-router-dom';
 import ItemPage from './components/pages/ItemPage/ItemPage';
 import Wishlist from './components/pages/Wishlist/Wishlist';
 import Footer from './components/layout/Footer/Footer';
 import Header from './components/layout/Header/Header';
 import CartContext from './components/context/CartContext';
+import ScrollToTop from './components/widgets/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
     <CartContext>      
-      <BrowserRouter>
+      <HashRouter>
+        <ScrollToTop/>
         <div className="App">
           <Header/>
           <main>
@@ -34,7 +36,7 @@ function App() {
           </main>
           <Footer/>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </CartContext>
   );
 }
