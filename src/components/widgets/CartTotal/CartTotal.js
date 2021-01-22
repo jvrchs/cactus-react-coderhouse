@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 
-const CartTotal = ({total, context}) => {
-
-    const {clpCurrencyFormat} = useContext(context) 
+const CartTotal = ({total, clpCurrencyFormat}) => {
 
     return (
         <div className="order-summary">

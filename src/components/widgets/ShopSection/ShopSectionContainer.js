@@ -1,31 +1,37 @@
 import React, {useEffect, useState} from 'react';
-import products from '../../data/products';
 import ShopSection from './ShopSection';
+import {getFirestore} from '../../firebase/firebase';
 
 const ShopSectionContainer = () => {
+
     const[productsData, setProductsData] = useState(false);
 
     useEffect(() => {
-        const getProducts = new Promise((resolve, reject) => {
-            resolve(products);
-        });
-        getProducts.then((productsArr) => {
+       const db = getFirestore();
+       console.log(db);
+       const itemsCollection = db.collection('Items');
+       console.log(itemsCollection);
+       const query = itemsCollection.get();
+       console.log(query);
 
-            let randomProductsArr = [];
+       query.then(response => {
+           let tempArr = [];
+           let randomProductsArr = [];
 
-            for (let i = 0; i < 8; i++) {
-                let index = Math.floor(Math.random() * productsArr.length);
-                randomProductsArr.push(productsArr[index]);
-                productsArr.splice(index,1);
-            }
+           console.log(response);
+           response.docs.forEach(doc => {
+               console.log(doc);
+               tempArr.push(doc.data())
+           });
 
-            setProductsData(randomProductsArr);
-
-            for (let j = 0; j < randomProductsArr.length; j++) {
-                productsArr.push(randomProductsArr[j]);
-            };
-        })
-    }, []);
+           for (let i = 0; i < 8; i++) {
+               let index = Math.floor(Math.random() * tempArr.length);
+               randomProductsArr.push(tempArr[index]);
+               tempArr.splice(index,1);
+           }
+           setProductsData(randomProductsArr)
+       })
+    }, [])
 
     return (
         <>

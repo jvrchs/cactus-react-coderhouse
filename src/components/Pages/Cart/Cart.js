@@ -1,26 +1,13 @@
-import React, {useContext, useState, useEffect} from 'react';
-import {context} from '../../context/context';
-import products from '../../data/products';
+import React, {useEffect} from 'react';
 import CartInfo from '../../widgets/CartInfo/CartInfo';
 import CartTotal from '../../widgets/CartTotal/CartTotal';
 import Button from '../../widgets/Button/Button';
 import { Link } from 'react-router-dom';
 
-const Cart = () => {
-    
-    const {cart, addItem, updateCart, tempCart, setTempCart} = useContext(context);
+const Cart = (props) => {
 
-    const [cartData, setCartData] = useState([]);
-
-    const[total, setTotal] = useState(0);
-
-    const [qty, setQty] = useState(0);
-
-    const onAdd = (itemAdded, id) => {
-        setQty(itemAdded)
-        addItem(id, itemAdded)
-    }
-
+    const {productsData, cart, cartData, setCartData, total, setTotal, onAdd, clpCurrencyFormat, removeItem} = props
+  
     useEffect(() => {
 
         let cartDataArr = [];
@@ -28,8 +15,8 @@ const Cart = () => {
         let newTotal = 0;
 
         for(let i = 0; i < cart.length; i++) {
-            let [tempProduct] = products.filter(item => item.id === cart[i].itemId);
-
+            let [tempProduct] = productsData.filter(item => item.itemId === cart[i].itemId);
+            console.log(tempProduct);
             tempProduct.quantity = cart[i].quantity;
             
             !tempProduct.offer[0] ?
@@ -44,7 +31,7 @@ const Cart = () => {
 
         setTotal(newTotal)
 
-    },[cart])
+    }, [cart])
 
     return (
         <section className="cart-section section-box">
@@ -58,8 +45,8 @@ const Cart = () => {
                 <br/>
                 {cartData.length ? 
                     <>
-                        <CartInfo cartData={cartData} context={context} onAdd={onAdd} setTempCart={setTempCart} tempCart={tempCart}/>
-                        <CartTotal total={total} context={context}/>
+                        <CartInfo cartData={cartData} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem}/>
+                        <CartTotal total={total} clpCurrencyFormat={clpCurrencyFormat}/>
                         <Button>Actualizar el carro</Button>
                     </>   
                     :

@@ -2,9 +2,7 @@ import React, {useContext} from 'react';
 import {FaTimes} from 'react-icons/fa';
 import ItemCount from '../CounterNew/ItemCount';
 
-const CartInfo = ({cartData, context, onAdd, tempCart}) => {
-
-    const {clpCurrencyFormat, removeItem, updateCart, setTempCart} = useContext(context);
+const CartInfo = ({cartData, onAdd, clpCurrencyFormat, removeItem}) => {
 
     return (
         <div className="cart-info">
@@ -24,11 +22,11 @@ const CartInfo = ({cartData, context, onAdd, tempCart}) => {
                         return(
                         <tr key={item.id}>
                             <td><img width='50' src={`media/img/products/${item.images[0]}`} alt={item.alt}/></td>
-                            <td>{item.title}<span>{item.category}</span></td>
-                            <td><ItemCount stockQty={item.stock} onAdd={onAdd} id={item.id} quantity={item.quantity} updateCart={updateCart} setTempCart={setTempCart} tempCart={tempCart}/></td>
+                            <td>{item.itemName}<span>{item.categoryName}</span></td>
+                            <td><ItemCount stockQty={item.stock} onAdd={onAdd} id={item.itemId} quantity={item.quantity}/></td>
                             <td>{!item.offer[0] ? clpCurrencyFormat(item.price) : clpCurrencyFormat(item.offer[1])}</td>
                             <td>{!item.offer[0] ? clpCurrencyFormat(item.price * item.quantity) : clpCurrencyFormat(item.offer[1] * item.quantity)}</td>
-                            <td><FaTimes onClick={() => removeItem(item.id, item.quantity)}/></td>
+                            <td><FaTimes onClick={() => removeItem(item.itemId, item.quantity)}/></td>
                         </tr>
                         )
                     })}

@@ -12,20 +12,20 @@ const ItemDetail = (props) => {
     return(
         <section className="item-detail-section section-box">
             {
-                productsData.map(product => {
+                productsData.map(item => {
                     return(
-                        product.itemId === id ?
-                            <div className="item-detail-container section-container-box" key={product.itemId}>
-                                <ProductImageGallery imageArr={product.images} alt={product.alt} />
+                        item.itemId === id ?
+                            <div className="item-detail-container section-container-box" key={item.itemId}>
+                                <ProductImageGallery imageArr={item.images} alt={item.alt} />
                                 <div className="item-detail-info-wrapper">
-                                    <h1>{product.itemName.toUpperCase()}</h1>
-                                    {product.offer[0] ?
+                                    <h1>{item.itemName.toUpperCase()}</h1>
+                                    {item.offer[0] ?
                                     <>
-                                    <p className="old-price-detail">{clpCurrencyFormat(product.price)}</p>
-                                    <p className="new-price-detail">{clpCurrencyFormat(product.offer[1])}</p>
+                                    <p className="old-price-detail">{clpCurrencyFormat(item.price)}</p>
+                                    <p className="new-price-detail">{clpCurrencyFormat(item.offer[1])}</p>
                                     </>
                                     :
-                                    <p>{clpCurrencyFormat(product.price)}</p>
+                                    <p>{clpCurrencyFormat(item.price)}</p>
                                     }
                                     <hr/>
                                     <h2>CANTIDAD</h2>
@@ -34,13 +34,13 @@ const ItemDetail = (props) => {
                                     :
                                     <ItemCount 
                                     className='item-detail-counter' 
-                                    stockQty={product.stock}  
+                                    stockQty={item.stock}  
                                     itemAdded={itemAdded} 
                                     setItemAdded={setItemAdded}
                                     onAdd={onAdd}
-                                    id={product.id}/> 
+                                    id={item.itemId}/> 
                                     }
-                                    <p>Descripción: {product.description}</p>
+                                    <p>Descripción: {item.description}</p>
                                 </div>
                             </div>
                         :

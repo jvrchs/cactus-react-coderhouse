@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import {Link} from 'react-router-dom';
 
 const ShopSection = ({productsData}) => {
-
+    console.log(productsData);
     return (
 
         <div className="shop-section">
@@ -15,13 +15,13 @@ const ShopSection = ({productsData}) => {
                 <span></span>
             </div>
             <div className="item-card-container">
-                {productsData.map((item) => {
+                {productsData.map(item => {
                     return(
                         <ItemCard
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        category={item.category}
+                        key={item.itemId}
+                        id={item.itemId}
+                        title={item.itemName}
+                        category={item.categoryName}
                         price={item.price}
                         offer={item.offer ? item.offer[1] : null}
                         image={item.images[0]}

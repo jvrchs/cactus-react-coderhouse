@@ -6,8 +6,10 @@ import TextImageContent from '../../widgets/TextImageContent/TextImageContent'
 import './Home.scss'
 
 const Home = () => {
+
     return (
         <>
+            
             <CarouselContainer/>
             <section className="home-section section-box">
                 <div className="home-container section-container-box">
@@ -16,7 +18,6 @@ const Home = () => {
                     <ShopSectionContainer/>
                 </div>
             </section>
-
         </>
     )
 }
