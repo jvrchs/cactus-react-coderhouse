@@ -1,17 +1,25 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import CartWidget from '../CartWidget/CartWidget';
-import { RiCactusLine } from "react-icons/ri";
+import { RiCactusLine, RiLogoutBoxRLine } from "react-icons/ri";
 import { FaCaretDown } from "react-icons/fa";
 import './NavBar.scss'
 import {Link, useLocation} from 'react-router-dom';
 import Dropdown from '../Dropdown/Dropdown';
 import {FaHeart} from 'react-icons/fa';
+import { context } from '../../context/context';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const NavBar = () => {
+
     const url = useLocation();
 
+    const {loggedIn, setCurrentUserData, setCurrentUserId, currentUserId, setLoggedIn} = useContext(context);
+
     const[click, setClick] = useState(false);
-    const[navbar, setNavbar] = useState(false);
+
+    const[navbar, setNavbar] = useState(true);
+
     const[dropdown, setDropdown] = useState(false);
 
     const handleClick = () => setClick(!click);
@@ -40,6 +48,16 @@ const NavBar = () => {
 
     window.addEventListener('scroll', changeBackground);
 
+    const logOut = e => {
+        if(url.pathname === `/mi-cuenta/${currentUserId}`) {
+            firebase.auth().signOut();
+        } else {
+            firebase.auth().signOut();
+        }
+        setLoggedIn(false);
+        setCurrentUserData({})
+        setCurrentUserId(null)
+    }
     return(
         <>
             <nav className=
@@ -76,17 +94,12 @@ const NavBar = () => {
                             {dropdown ? <Dropdown/> : null}
                         </li>
                         <li className='nav-item'>
-                            <Link to='/nosotros' className='nav-links' onClick={closeMobileMenu}>
-                                Nosotros
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
                             <Link to='/contacto' className='nav-links' onClick={closeMobileMenu}>
                                 Contacto
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/mi-cuenta' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to={loggedIn ? `/mi-cuenta/${currentUserId}` : '/mi-cuenta'} className='nav-links' onClick={closeMobileMenu}>
                                 Mi cuenta
                             </Link>
                         </li>
@@ -96,9 +109,8 @@ const NavBar = () => {
                         <Link to="/carro">
                             <CartWidget/>
                         </Link>
-                        <Link to="/mi-cuenta/wishlist">
-                            <FaHeart/>
-                        </Link>
+                        {loggedIn ? <Link to='/mi-cuenta'><FaHeart/></Link> : <Link to='/mi-cuenta'><FaHeart/></Link>}
+                        {loggedIn ? <Link to='/'><RiLogoutBoxRLine onClick={logOut}/></Link> : null} 
                 </div>
                 <div className='menu-icon' onClick={handleClick}>
                     <i className={click ? 'fas fa-times' : 'fas fa-bars'}></i>

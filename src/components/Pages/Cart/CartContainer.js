@@ -4,20 +4,22 @@ import {context} from '../../context/context';
 import Cart from './Cart'
 
 const CartContainer = () => {
+    
+    const {cart, setCart, cartData, setCartData, addItem, clpCurrencyFormat, removeItem, total, setTotal} = useContext(context);
 
-    const [cartData, setCartData] = useState([]);
-
-    const[productsData, setProductsData] = useState(false);
-
-    const {cart, addItem, clpCurrencyFormat, removeItem} = useContext(context);
-
-    const[total, setTotal] = useState(0);
+    const [newCart, setNewCart] = useState([]);
+    
+    const [productsData, setProductsData] = useState(false);
 
     const [qty, setQty] = useState(0);
 
     const onAdd = (itemAdded, id) => {
         setQty(itemAdded)
         addItem(id, itemAdded)
+    }
+
+    const cartUpdate = () => {
+        setCart(newCart)
     }
 
     useEffect(() => {
@@ -29,7 +31,10 @@ const CartContainer = () => {
         .then((response) => {
             let tempArr = [];
             response.docs.forEach(doc => {
-                tempArr.push(doc.data())
+                tempArr.push({
+                    docId: doc.id,
+                    itemData: doc.data()
+                })
             });
             setProductsData(tempArr)
         })
@@ -42,7 +47,7 @@ const CartContainer = () => {
         <>
             {
                 productsData ?
-                <Cart productsData={productsData} cart={cart} addItem={addItem} cartData={cartData} setCartData={setCartData} total={total} setTotal={setTotal} qty={qty} setQty={setQty} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem} />
+                <Cart productsData={productsData} cart={cart} newCart={newCart} setNewCart={setNewCart} addItem={addItem} cartData={cartData} setCartData={setCartData} total={total} setTotal={setTotal} qty={qty} setQty={setQty} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem} cartUpdate={cartUpdate}/>
                 :
                 <p>LOADING</p>
             }

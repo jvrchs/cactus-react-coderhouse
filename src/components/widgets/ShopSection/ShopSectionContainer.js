@@ -7,30 +7,35 @@ const ShopSectionContainer = () => {
     const[productsData, setProductsData] = useState(false);
 
     useEffect(() => {
-       const db = getFirestore();
-       console.log(db);
-       const itemsCollection = db.collection('Items');
-       console.log(itemsCollection);
-       const query = itemsCollection.get();
-       console.log(query);
+        
+        let mounted = true;
 
-       query.then(response => {
-           let tempArr = [];
-           let randomProductsArr = [];
+        const db = getFirestore();
 
-           console.log(response);
-           response.docs.forEach(doc => {
-               console.log(doc);
-               tempArr.push(doc.data())
-           });
+        const itemsCollection = db.collection('Items');
+        
+        const query = itemsCollection.get();
 
-           for (let i = 0; i < 8; i++) {
-               let index = Math.floor(Math.random() * tempArr.length);
-               randomProductsArr.push(tempArr[index]);
-               tempArr.splice(index,1);
-           }
-           setProductsData(randomProductsArr)
+        query.then(response => {
+            let tempArr = [];
+            let randomProductsArr = [];
+            response.docs.forEach(doc => {
+                tempArr.push(doc.data())
+            });
+
+            for (let i = 0; i < 8; i++) {
+                let index = Math.floor(Math.random() * tempArr.length);
+                randomProductsArr.push(tempArr[index]);
+                tempArr.splice(index,1);
+            }
+
+            if(mounted) {
+                setProductsData(randomProductsArr)
+                }
        })
+
+       return () => {mounted = false}
+
     }, [])
 
     return (

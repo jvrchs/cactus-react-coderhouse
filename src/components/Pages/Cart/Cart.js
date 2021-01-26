@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
 
-    const {productsData, cart, cartData, setCartData, total, setTotal, onAdd, clpCurrencyFormat, removeItem} = props
-  
+    const {productsData, cart, newCart, setNewCart, cartData, setCartData, total, setTotal, onAdd, clpCurrencyFormat, removeItem, cartUpdate} = props
+
     useEffect(() => {
 
         let cartDataArr = [];
@@ -15,14 +15,13 @@ const Cart = (props) => {
         let newTotal = 0;
 
         for(let i = 0; i < cart.length; i++) {
-            let [tempProduct] = productsData.filter(item => item.itemId === cart[i].itemId);
-            console.log(tempProduct);
-            tempProduct.quantity = cart[i].quantity;
+            let [tempProduct] = productsData.filter(item => item.itemData.itemId === cart[i].itemId);
+            tempProduct.itemData.quantity = cart[i].quantity;
             
-            !tempProduct.offer[0] ?
-                newTotal += tempProduct.price * tempProduct.quantity
+            !tempProduct.itemData.offer[0] ?
+                newTotal += tempProduct.itemData.price * tempProduct.itemData.quantity
                 :
-                newTotal += tempProduct.offer[1] * tempProduct.quantity
+                newTotal += tempProduct.itemData.offer[1] * tempProduct.itemData.quantity
 
             cartDataArr.push(tempProduct)
         }  
@@ -45,9 +44,15 @@ const Cart = (props) => {
                 <br/>
                 {cartData.length ? 
                     <>
-                        <CartInfo cartData={cartData} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem}/>
-                        <CartTotal total={total} clpCurrencyFormat={clpCurrencyFormat}/>
-                        <Button>Actualizar el carro</Button>
+                        <div>
+                            <CartInfo cartData={cartData} newCart={newCart} setNewCart={setNewCart} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem}/>
+                            <Button onClick={cartUpdate}>Actualizar el carro</Button>
+                        </div>
+                        <div>
+                            <CartTotal total={total} clpCurrencyFormat={clpCurrencyFormat}/>
+                            <Link to='/checkout'><Button>Proceder al pago</Button></Link>
+                            <Link to='/'><p>Continuar comprando</p></Link>
+                        </div>
                     </>   
                     :
                     <>

@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import {Link} from 'react-router-dom';
 
 const ShopSection = ({productsData}) => {
-    console.log(productsData);
+
     return (
 
         <div className="shop-section">

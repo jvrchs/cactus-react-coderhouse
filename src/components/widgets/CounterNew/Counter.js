@@ -8,7 +8,7 @@ const Counter = (props) => {
         <div className="counter">
             <span>
                 <button onClick={decrease}>-</button>
-                <input type="number" min='0' max={stockQty} value={counterValue.count} onChange={e => handleChange(e, itemId, counterValue)}/>
+                <input type="number" min='0' max={stockQty} value={counterValue.count} onChange={handleChange}/>
                 <button onClick={increase}>+</button>
             </span>
         </div>  

@@ -1,20 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Counter from './Counter';
 import {context} from '../../context/context'
 
 const ItemCount = (props) => {
 
-    const {className, stockQty, quantity, itemId} = props;
+    const {cart, removeItem} = useContext(context);
 
-    const {cart} = useContext(context)
+    const {className, stockQty, quantity, itemId, setNewCart} = props;
 
     const counterObj = {count: quantity}
 
     const [counterValue, setCounterValue] = useState(counterObj)
-
+   
     const decrease = () => {
         if(counterValue.count <= 1) {
-        }else {
+        } else {
             setCounterValue({count: counterValue.count - 1});
         }  
     };
@@ -26,11 +26,23 @@ const ItemCount = (props) => {
         }
     };
 
-    const handleChange = (e, itemId, counterValue) => {
+    const handleChange = e => {
         const {valueAsNumber} = e.target;
-        
         Number.isNaN(valueAsNumber) ? setCounterValue({count: ''}) : setCounterValue({count: valueAsNumber});
     }
+
+    useEffect(() => {
+       let tempArr = []
+       let itemObj = {itemId: itemId, quantity: counterValue.count}
+       for(let i = 0; i < cart.length; ++i) {
+           if(cart[i].itemId === itemId) {
+               tempArr.push(itemObj)
+           } else {
+               tempArr.push(cart[i])
+           }
+       }
+       setNewCart(tempArr)
+    }, [counterValue, removeItem])
 
     return (
         <div className={`item-count-wrapper ${className}`}>

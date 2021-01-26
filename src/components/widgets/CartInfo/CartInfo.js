@@ -2,8 +2,8 @@ import React, {useContext} from 'react';
 import {FaTimes} from 'react-icons/fa';
 import ItemCount from '../CounterNew/ItemCount';
 
-const CartInfo = ({cartData, onAdd, clpCurrencyFormat, removeItem}) => {
-
+const CartInfo = ({cartData, onAdd, clpCurrencyFormat, removeItem, newCart, setNewCart}) => {
+ 
     return (
         <div className="cart-info">
             <table>
@@ -20,13 +20,13 @@ const CartInfo = ({cartData, onAdd, clpCurrencyFormat, removeItem}) => {
                 <tbody>
                     {cartData.map(item => {
                         return(
-                        <tr key={item.id}>
-                            <td><img width='50' src={`media/img/products/${item.images[0]}`} alt={item.alt}/></td>
-                            <td>{item.itemName}<span>{item.categoryName}</span></td>
-                            <td><ItemCount stockQty={item.stock} onAdd={onAdd} id={item.itemId} quantity={item.quantity}/></td>
-                            <td>{!item.offer[0] ? clpCurrencyFormat(item.price) : clpCurrencyFormat(item.offer[1])}</td>
-                            <td>{!item.offer[0] ? clpCurrencyFormat(item.price * item.quantity) : clpCurrencyFormat(item.offer[1] * item.quantity)}</td>
-                            <td><FaTimes onClick={() => removeItem(item.itemId, item.quantity)}/></td>
+                        <tr key={item.itemData.id}>
+                            <td><img width='50' src={`media/img/products/${item.itemData.images[0]}`} alt={item.itemData.alt}/></td>
+                            <td>{item.itemData.itemName}<span>{item.itemData.categoryName}</span></td>
+                            <td><ItemCount stockQty={item.itemData.stock} onAdd={onAdd} itemId={item.itemData.itemId} quantity={item.itemData.quantity} newCart={newCart} setNewCart={setNewCart}/></td>
+                            <td>{!item.itemData.offer[0] ? clpCurrencyFormat(item.itemData.price) : clpCurrencyFormat(item.itemData.offer[1])}</td>
+                            <td>{!item.itemData.offer[0] ? clpCurrencyFormat(item.itemData.price * item.itemData.quantity) : clpCurrencyFormat(item.itemData.offer[1] * item.itemData.quantity)}</td>
+                            <td><FaTimes onClick={() => removeItem(item.itemData.itemId, item.itemData.quantity)}/></td>
                         </tr>
                         )
                     })}
