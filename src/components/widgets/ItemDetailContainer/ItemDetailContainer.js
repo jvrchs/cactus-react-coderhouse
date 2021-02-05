@@ -1,12 +1,20 @@
 import React, {useState, useEffect, useContext} from 'react';
 import ItemDetail from './ItemDetail/ItemDetail';
 import {useParams} from 'react-router-dom';
-import {context} from '../../context/context';
+import { contextForCart } from '../../context/contextForCart';
+import { contextForFirebase } from '../../context/contextForFirebase';
+import Loader from '../Loader/Loader';
 import {getFirestore} from '../../firebase/firebase';
 
 const ItemDetailContainer = () => {
 
-    const[productsData, setProductsData] = useState(false);
+    const {clpCurrencyFormat, cart, dispatch} = useContext(contextForCart);
+
+    const {addWishlist} = useContext(contextForFirebase);
+
+    const [productsData, setProductsData] = useState([]);
+
+    const [loader, setLoader] = useState(true);
 
     const [itemAdded, setItemAdded] = useState(1);
         
@@ -14,11 +22,8 @@ const ItemDetailContainer = () => {
 
     const idUrlParam = useParams();
 
-    const {clpCurrencyFormat, cart, addItem} = useContext(context);
-
-    const onAdd = (itemAdded, id) => {
+    const onAdd = itemAdded => {
         setQty(itemAdded)
-        addItem(id, itemAdded)
     }
 
     useEffect(() => {
@@ -33,6 +38,7 @@ const ItemDetailContainer = () => {
                 tempArr.push(doc.data())
             });
             setProductsData(tempArr)
+            setLoader(false)
         })
         .catch((reject) => {
             console.log(reject)
@@ -42,19 +48,21 @@ const ItemDetailContainer = () => {
     return(
         <>
             {
-                productsData ?
-                <ItemDetail 
-                productsData={productsData} 
-                id={idUrlParam.itemId} 
-                itemAdded={itemAdded}
-                setItemAdded={setItemAdded}
-                onAdd={onAdd}
-                clpCurrencyFormat={clpCurrencyFormat}
-                cart={cart}
-                qty={qty}
-                />
-                :
-                <p>Cargando producto...</p>
+            loader ?
+            <Loader/> 
+            :
+            <ItemDetail 
+            productsData={productsData} 
+            id={idUrlParam.itemId} 
+            itemAdded={itemAdded}
+            setItemAdded={setItemAdded}
+            onAdd={onAdd}
+            clpCurrencyFormat={clpCurrencyFormat}
+            cart={cart}
+            qty={qty}
+            dispatch={dispatch}
+            addWishlist={addWishlist}
+            />
             }
         </>
     )

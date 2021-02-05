@@ -4,7 +4,7 @@ import {context} from '../../context/context'
 
 const ItemCount = (props) => {
 
-    const {cart, removeItem} = useContext(context);
+    const {cart, removeItem} = useContext(contextForCart);
 
     const {className, stockQty, quantity, itemId, setNewCart} = props;
 

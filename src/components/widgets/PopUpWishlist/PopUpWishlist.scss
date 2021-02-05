@@ -1,0 +1,33 @@
+@import "../../../design-tokens/_scss-variables.scss";
+@import "../../../design-tokens/css-variables.scss";
+
+.pop-up-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    z-index: 10;
+    top: calc(100vh - 80px);
+    .pop-up-wrapper {
+        display: flex;
+        align-items: center;
+        background-color: rgb(82, 15, 37);
+        height: 100%;
+        width: 90%;
+        padding: 2rem;
+        .pop-up-heart {
+            svg, path, circle {
+                fill: #fff;
+                stroke: #fff;
+                font-size: 1.5rem;
+            }
+            margin-right: 1.5rem;
+        }
+        p {
+            color: #fff;
+            margin: 0;
+        }
+    }
+}

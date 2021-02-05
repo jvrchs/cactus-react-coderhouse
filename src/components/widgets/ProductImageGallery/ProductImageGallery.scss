@@ -9,9 +9,8 @@
 
 .selected-image {
     box-shadow: 0 0 2rem 0rem rgba(25, 25, 25, 0.1);
-    display: flex;
-    width: 500px;
-   height: 500px;
+    width: 400px;
+    height: 400px;
     img {
         width: 100%;
         height: auto;
@@ -27,12 +26,25 @@
     grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
     grid-auto-rows: 9rem;
     margin-top: 1rem;
-
     img {
         width: 8rem;
         height: auto;
         cursor: pointer;
-        box-shadow: 0 0 10px 1px rgba(25, 25, 25, 0.1);
     }
 }
 
+@media screen and (max-width: 768px) {
+    .product-gallery-wrapper {
+        align-self: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .selected-image {
+        width: 235px;
+        height: 235px;
+    }
+    .product-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+    }
+}

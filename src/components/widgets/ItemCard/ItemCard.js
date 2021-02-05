@@ -5,25 +5,18 @@ import {Link} from 'react-router-dom';
 import {MdLocalOffer} from 'react-icons/md';
 import {FaHeart} from 'react-icons/fa';
 import { RiCactusLine } from "react-icons/ri";
-import {context} from '../../context/context';
+import { contextForCart } from '../../context/contextForCart';
+import { contextForFirebase } from '../../context/contextForFirebase';
 
-const Item = ({
-    id,
-    title,
-    category,
-    price,
-    offer,
-    image,
-    stock
-}) => {
+const ItemCard = (props) => {
+
+    const {id, title, category, price, offer, image, stock, handleAlert} = props
 
     const [itemAdded, setItemAdded] = useState(1);
 
-    const {addItem, clpCurrencyFormat} = useContext(context)
+    const {dispatch, clpCurrencyFormat} = useContext(contextForCart)
 
-    const onAdd = () => {
-        addItem(id, itemAdded)
-    }
+    const {addWishlist, loggedIn, currentUserData} = useContext(contextForFirebase)
     
     return (
         <div className="item-card">
@@ -42,15 +35,23 @@ const Item = ({
                             <p className={offer != null ? 'price old-price' : 'price' }>{clpCurrencyFormat(price)}</p>
                             <p className={offer != null ? 'price new-price' : 'no-offer' }>{clpCurrencyFormat(offer)}</p>
                         </div>
-                        <div className="heart">
-                            <FaHeart/>
+                        <div className={loggedIn && currentUserData.wishlist.includes(id) ? "heart filled" : "heart"}>
+                            {loggedIn ?
+                            <FaHeart onClick={() => addWishlist(id)}/>
+                            :
+                            <FaHeart onClick={() => window.location.hash = '/mi-cuenta'}/>
+                            }
                         </div>
                     </div>
-                    <ItemCount className='card-item-counter' stockQty={stock} itemAdded={itemAdded} setItemAdded={setItemAdded} itemId={id} onAdd={onAdd}/> 
+                    {stock === 0 ?
+                    <p className="no-stock-message">Sin stock</p>
+                    :
+                    <ItemCount className='card-item-counter' stockQty={stock} itemAdded={itemAdded} setItemAdded={setItemAdded} itemId={id} dispatch={dispatch} handleAlert={handleAlert}/> 
+                    }
                 </div>
             </div>
         </div>
     )
 };
 
-export default Item;
+export default ItemCard;

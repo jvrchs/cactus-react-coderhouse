@@ -24,12 +24,18 @@
     }
 }
 
+@media screen and (max-width: 960px) {
+    .home-body-content-text {
+    padding: 4rem 5rem;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .home-body-content-text {
         font-size: $p-font-size-mobile;
     }
     .home-body-content-text {
-        padding: 2rem 3rem;
+        padding: 2rem 0;
     }
     .home-body-content-img {
         img{

@@ -2,16 +2,16 @@
 @import "../../../design-tokens/css-variables.scss";
 
 .btn {
-    padding: 0.8rem 2rem;
+    padding: 8px 20px;
     border-radius: 0.4rem;
-    outline: none;
-    border: none;
+    border: 1px solid var(--color-secondary);
+    transition: all 0.3s ease-out;
     cursor: pointer;
 }
 
 .btn:hover {
-    background: #fff;
-    color: var(--color-secondary);
+    background: gray;
+    color: #fff !important;
     transition: 250ms;
     border: solid 1px var(--color-secondary);
 }
@@ -28,11 +28,7 @@
 
 .btn--outline {
     background-color: transparent;
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 0.4rem;
-    border: 1.5px solid #fff;
-    transition: all 0.3s ease-out;
+    color: var(--color-secondary) !important;
 }
 
 .btn--medium {

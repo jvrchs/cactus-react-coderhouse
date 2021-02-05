@@ -1,18 +1,20 @@
-import React, {useContext, useRef, useState} from 'react'
+import React, {useContext, useRef} from 'react'
 import {useForm} from 'react-hook-form';
 import Button from '../../widgets/Button/Button';
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import {context} from '../../context/context';
+import { contextForFirebase } from '../../context/contextForFirebase';
+import '../../widgets/Form/Form.scss'
+import './MyAccount.scss'
 
 const MyAccount = () => {
-
-    const {setCurrentUserId} = useContext(context);
+  
+    const {loggedIn, setCurrentUserId, setLoggedIn} = useContext(contextForFirebase);
     
     const {register, handleSubmit, errors} = useForm();
 
-    const {register: register2, handleSubmit: handleSubmit2, errors: errors2, watch: watch} = useForm();
+    const {register: register2, handleSubmit: handleSubmit2, errors: errors2, watch} = useForm();
 
     const password = useRef({});
 
@@ -27,7 +29,10 @@ const MyAccount = () => {
         const promise = auth.signInWithEmailAndPassword(email, pass);
         promise
             .then(response => {
-                setCurrentUserId(response.user.uid)
+                localStorage.setItem('currentUserId', response.user.uid);
+                localStorage.setItem('loggedIn', true);
+                setCurrentUserId(response.user.uid);
+                setLoggedIn(true);
                 window.location.hash = `/mi-cuenta/${response.user.uid}`;
             })
             .catch(e => alert(e.message));
@@ -37,7 +42,7 @@ const MyAccount = () => {
         //Get data
         const email = data.signUpEmail;
         const phone = data.signUpPhone;
-        const pass = data.signUpPass
+        const pass = data.signUpPass;
         const auth = firebase.auth();
         //Sign Up
         const promise = auth.createUserWithEmailAndPassword(email, pass);
@@ -46,13 +51,16 @@ const MyAccount = () => {
             const user = {
                 uid: newUser.user.uid,
                 email: email,
-                phone: phone
+                phone: phone,
             }
-            setCurrentUserId(newUser.user.uid)
+            localStorage.setItem('currentUserId', newUser.user.uid);
+            localStorage.setItem('loggedIn', true);
+            setCurrentUserId(newUser.user.uid);
+            setLoggedIn(true);
             writeUserData(user);
             window.location.hash = `/mi-cuenta/${newUser.user.uid}`;
         })    
-        .catch(e => alert(e.message))
+        .catch(e => alert(e.message));
     }
 
     const writeUserData = user => {
@@ -60,48 +68,55 @@ const MyAccount = () => {
         database.ref('users/' + user.uid).set(user);
     }
 
-    return (
+    if(loggedIn){
+        window.location.hash = `/mi-cuenta/${localStorage.getItem('currentUserId')}`
+    }
 
+    return (
         <section className="my-account-section section-box">
             <div className="my-account-container section-container-box">
                 <div className="section-title">
-                    <span></span>
                     <h1>MI CUENTA</h1>
-                    <span></span>
                 </div>
                 <div className="my-account-forms-container">
-                    <div className='logIn-form-wrapper'>
+                    <div className='my-account-form-wrapper'>
                         <form onSubmit={handleSubmit(onLogInSubmit)}>
-                            <div>
+                            <h3>Iniciar Sesión</h3>
+                            <div className="form-field">
                                 <label htmlFor="logInEmail">E-mail</label>
                                 <input name="logInEmail" ref={register({required: "E-mail requerido", pattern: {value:/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/, message: "Email inválido"}})}/>
-                                {errors.logInEmail && <p>{errors.logInEmail.message}</p>}
-
+                                <small>{errors.logInEmail && <p>{errors.logInEmail.message}</p>}</small>
+                            </div>
+                            <div className="form-field">
                                 <label htmlFor="logInPass">Contraseña</label>
                                 <input name="logInPass" type="password" ref={register({required: "Contraseña requerida"})}/>
-                                {errors.logInPass && <p>{errors.logInPass.message}</p>}
+                                <small>{errors.logInPass && <p>{errors.logInPass.message}</p>}</small>
                             </div>
                             <Button type="submit">Iniciar sesión</Button>
                         </form>
                     </div>
-                    <div className='signUp-form-wrapper'>
+                    <div className='my-account-form-wrapper'>
                         <form onSubmit={handleSubmit2(onSignUpSubmit)}>
-                            <div>
+                            <h3>Registrarse</h3>
+                            <div className="form-field">
                                 <label htmlFor="signUpEmail">E-mail*</label>
                                 <input name="signUpEmail" ref={register2({required: "E-mail requerido", pattern: {value:/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/, message: "Email inválido"}})}/>
-                                {errors2.signUpEmail && <p>{errors2.signUpEmail.message}</p>}
-
+                                <small>{errors2.signUpEmail && <p>{errors2.signUpEmail.message}</p>}</small>
+                            </div>
+                            <div className="form-field">
                                 <label htmlFor="signUpPhone">Teléfono*</label>
-                                <input name="signUpPhone" ref={register2({required: "Teléfono requerido", pattern: {value: /^[0-9]*$/, message: "Némero inválido"}})}/>
-                                {errors2.signUpPhone && <p>{errors2.signUpPhone.message}</p>}
-
+                                <input name="signUpPhone" ref={register2({required: "Teléfono requerido", pattern: {value: /^[0-9]*$/, message: "Número inválido"}})}/>
+                                <small>{errors2.signUpPhone && <p>{errors2.signUpPhone.message}</p>}</small>
+                            </div>
+                            <div className="form-field">
                                 <label htmlFor="signUpPass">Contraseña*</label>
                                 <input name="signUpPass" type="password" ref={register2({required: "Contraseña requerida", minLength: {value: 6, message: "La contraseña debe contener al menos 6 caracteres"}})}/>
-                                {errors2.signUpPass && <p>{errors2.signUpPass.message}</p>}
-
+                                <small>{errors2.signUpPass && <p>{errors2.signUpPass.message}</p>}</small>
+                            </div>
+                            <div className="form-field">
                                 <label htmlFor="passRepeat">Confirme la contraseña*</label>
                                 <input name="passRepeat" type="password" ref={register2({validate: value => value === password.current || "Las contraseñas no coinciden"})}/>
-                                {errors2.passRepeat && <p>{errors2.passRepeat.message}</p>}
+                                <small>{errors2.passRepeat && <p>{errors2.passRepeat.message}</p>}</small>
                             </div>
                             <Button type="submit">Registrarse</Button>
                         </form>

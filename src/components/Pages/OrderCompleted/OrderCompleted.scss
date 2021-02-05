@@ -1,0 +1,21 @@
+.order-section {
+    font-size: 1.6rem;
+    .order-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .order-id-wrapper {
+        p{
+            &:first-child {
+                text-align: center;
+            }
+            &:nth-child(2) {
+                margin: 1rem 0;
+            }
+        }
+    }
+    .cart-summary-wrapper {
+        margin-top: 2rem;
+    }
+}

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Cart = (props) => {
 
-    const {productsData, cart, newCart, setNewCart, cartData, setCartData, total, setTotal, onAdd, clpCurrencyFormat, removeItem, cartUpdate} = props
+    const {productsData, cart, cartData, setCartData, total, setTotal, clpCurrencyFormat, dispatch, handleAlert} = props
 
     useEffect(() => {
 
@@ -30,35 +30,32 @@ const Cart = (props) => {
 
         setTotal(newTotal)
 
-    }, [cart])
+    }, [cart]);
 
     return (
         <section className="cart-section section-box">
             <div className="cart-container section-container-box">
                 <div className="section-title">
-                    <span></span>
                     <h1>CARRO</h1>
-                    <span></span>
                 </div>
-                <br/>
-                <br/>
                 {cartData.length ? 
-                    <>
-                        <div>
-                            <CartInfo cartData={cartData} newCart={newCart} setNewCart={setNewCart} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem}/>
-                            <Button onClick={cartUpdate}>Actualizar el carro</Button>
-                        </div>
-                        <div>
-                            <CartTotal total={total} clpCurrencyFormat={clpCurrencyFormat}/>
+                <div className="cart-data-container">
+                    <div className="cart-table-wrapper">
+                        <CartInfo cartData={cartData} clpCurrencyFormat={clpCurrencyFormat} dispatch={dispatch} handleAlert={handleAlert}/>
+                    </div>
+                    <div className="cart-summary-wrapper">
+                        <CartTotal cartData={cartData} total={total} clpCurrencyFormat={clpCurrencyFormat}/>
+                        <div className='cart-total-btn'>
                             <Link to='/checkout'><Button>Proceder al pago</Button></Link>
                             <Link to='/'><p>Continuar comprando</p></Link>
                         </div>
-                    </>   
-                    :
-                    <>
-                        <p>El carro de compras está vacío. Puedes volver y comenzar a agregar productos.</p>
-                        <Link to='/'><Button buttonStyle='btn--primary' buttonSize='btn-large'>VOLVER A COMPRAR</Button></Link>
-                    </> 
+                    </div>
+                </div>   
+                :
+                <div className="empty-cart-message">
+                    <p>El carro de compras está vacío. Puedes volver y comenzar a agregar productos.</p>
+                    <Link to='/'><Button buttonStyle='btn--primary' buttonSize='btn-large'>VOLVER A COMPRAR</Button></Link>
+                </div> 
                 }
             </div>
         </section>

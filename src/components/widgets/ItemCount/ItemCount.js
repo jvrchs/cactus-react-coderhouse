@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ItemCount.scss';
 import Button from '../Button/Button';
+import { ACTIONS } from '../../context/cartReducer';
+import { contextForCart } from '../../context/contextForCart';
 
-const ItemCount = ({
-    className,
-    stockQty,
-    itemAdded, 
-    setItemAdded,
-    id,
-    onAdd}) => {
+const ItemCount = (props) => {
+
+    const {className, stockQty, onAdd, itemAdded, setItemAdded, itemId, dispatch, handleAlert} = props;
+
+    const {cart} = useContext(contextForCart);
 
     const decrease = () => {
         if(itemAdded <= 1) {
@@ -21,6 +21,32 @@ const ItemCount = ({
         if(itemAdded >= stockQty) {
         } else {
             setItemAdded(itemAdded + 1);
+        }
+    };
+
+    const addToCart = () => {
+        dispatch({type: ACTIONS.ADD_ITEM, payload:{itemId: itemId, quantity: itemAdded}});
+        onAdd(itemAdded);
+        const isInCart = cart.filter(item => item.itemId === itemId);
+        if(isInCart.length !== 0) {
+            const [itemObj] = isInCart;
+            if(itemObj['quantity'] >= stockQty) {
+                handleAlert();
+            }  
+        } 
+    };
+
+    const addToCartCard = () => {
+        const isInCart = cart.filter(item => item.itemId === itemId);
+        if(isInCart.length !== 0) {
+            const [itemObj] = isInCart;
+            if(itemObj['quantity'] >= stockQty) {
+                handleAlert();
+            } else {
+                dispatch({type: ACTIONS.ADD_ITEM, payload:{itemId: itemId, quantity: itemAdded}});
+            } 
+        } else {
+            dispatch({type: ACTIONS.ADD_ITEM, payload:{itemId: itemId, quantity: itemAdded}});
         }
     };
 
@@ -41,7 +67,7 @@ const ItemCount = ({
                         </tbody>
                     </table>
                 </div>
-                <Button className="addToCart-btn" onClick={() => onAdd(itemAdded, id)}>Añadir al carro</Button>   
+                <Button className="addToCart-btn" onClick={addToCart}>Añadir al carro</Button>   
             </div>
             :
             <div className={`item-count-wrapper ${className}`}>
@@ -50,7 +76,7 @@ const ItemCount = ({
                     <p>{itemAdded}</p>
                     <button className="counter-btn" onClick={increase}><p>+</p></button>
                 </div>
-                <button className="counter-btn addToCart-btn" onClick={onAdd}><p>Añadir al carrito</p></button>
+                <button className="counter-btn addToCart-btn" onClick={addToCartCard}><p>Añadir al carrito</p></button>
             </div>
         }
         </>

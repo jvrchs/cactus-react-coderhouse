@@ -1,0 +1,47 @@
+@import "../../../design-tokens/_scss-variables";
+@import "../../../design-tokens/css-variables.scss";
+
+.checkout-form {
+    .form-btn-container {
+        display: block;
+        width: 100%;
+        text-align: center;
+        .form-btn-wrapper {
+            display: flex;
+            justify-content: space-evenly;
+            margin: auto;
+        }
+    }
+}
+
+.pay-with-account {
+    width: fit-content;
+   margin: auto;
+    background-color: var(--color-secondary);
+    font-size: 1.6rem;
+    padding: 2rem;
+    div {
+    
+        display: flex;
+        p {
+            color: #fff;
+        }
+        a {
+            color: #fff;
+            margin-left: 5rem;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .pay-with-account {
+        div {
+            flex-direction: column;
+            align-items: center;
+            a {
+                margin-top: 1rem;
+                margin-left: 0;
+            }
+        }
+    }
+}

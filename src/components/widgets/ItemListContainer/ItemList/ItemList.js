@@ -2,15 +2,13 @@ import React from 'react';
 import ItemCard from '../../ItemCard/ItemCard';
 import "./ItemList.scss";
 
-const ItemList = ({productsData, categoryUrl, location}) => {
+const ItemList = ({productsData, categoryUrl, location, handleAlert}) => {
 
     return(
         <section className='item-list-section section-box'>
             <div className="item-list-container item-list-container-box">
                 <div className="section-title">
-                    <span></span>
-                    <h1>{location.pathname === '/tienda' ? 'TIENDA' : categoryUrl.categoryId.split('-').join(' ').toUpperCase()}</h1>
-                    <span></span>
+                    <h1>{location.pathname === '/tienda' ? 'TIENDA' : categoryUrl.categoryId.split('-').join(' ').toUpperCase()}</h1>    
                 </div>
                 <div className="item-list-cards-container">
                     {categoryUrl.categoryId ? 
@@ -27,6 +25,7 @@ const ItemList = ({productsData, categoryUrl, location}) => {
                             image={item.images[0]}
                             alt={item.alt}
                             stock={item.stock}
+                            handleAlert={handleAlert}
                             />   
                         )
                     })
@@ -43,7 +42,8 @@ const ItemList = ({productsData, categoryUrl, location}) => {
                                 offer={item.offer ? item.offer[1] : null}
                                 image={item.images[0]}
                                 alt={item.alt}
-                                stock={item.stock}/>   
+                                stock={item.stock}   
+                                handleAlert={handleAlert}/>
                         )
                     })
                     }

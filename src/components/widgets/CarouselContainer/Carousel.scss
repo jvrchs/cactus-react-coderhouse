@@ -2,9 +2,10 @@
 @import "../../../design-tokens/css-variables.scss";
 
 .carousel-section {
-    position: relative;
-    
+    position: relative;   
+    animation: appear 0.9s;
 }
+
 .carousel-container {
     width: 100%;
     height: auto;
@@ -12,6 +13,14 @@
     justify-content: center;
     align-items: center;
     z-index: -1;
+}
+
+.carousel-btn {
+    border: 1.5px solid #fff;
+    color: #fff !important;
+    &:hover {
+        color: var(--color-secondary) !important;
+    }
 }
 
 .right-arrow {
@@ -62,7 +71,7 @@
     position: absolute;
     margin-left: 8rem;
     padding-right: 10rem;
-    top: 40%;
+    top: 41%;
 }
 
 .header-sm {
@@ -85,17 +94,15 @@
         height: auto;
     }
     .header-container {
-        top: 30%;
+        top: 35%;
     }
-    
-
 }
 
 @media screen and (max-width: 768px) {
     .header-container {
         margin-left: 6rem;
         padding-right: 5rem;
-        top: 30%;
+        top: 38%;
     }
     .header-sm {
         font-size: 2rem;
@@ -119,9 +126,14 @@
         margin-left: 6rem;
         padding-right: 2rem;
         padding-top: 0;
-        top: 35%
+        top: 33%
     }
     .slide.active {
         padding-top: 55%;
     }
 }
+
+@keyframes appear {
+    from {opacity: 0 ;}
+    to {opacity: 1; }
+  }

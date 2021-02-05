@@ -1,3 +1,268 @@
-.add-address-btn {
+@import "../../../design-tokens/_scss-variables.scss";
+@import "../../../design-tokens/css-variables.scss";
+
+.dashboard-section {
+    p {
+        line-height: 25px;
+    }
+    hr {
+        background-color: rgba(0,0,0,.125);
+        height: 0.1px;
+        border-color: transparent;
+    }
+}
+    
+.dashboard-details-container {
+    padding: 15px;
     display: flex;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    h3 {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+    }  
+}
+
+.customer-orders-details{
+    border: 1px solid rgba(0,0,0,.125);
+    width: 65%;
+    height: fit-content;
+    overflow-wrap: break-word;
+    .orders-wishlist-container{
+        height: 100%;
+        .orders-wishlist-row {
+            height: 100%;
+        }    
+    }
+}
+
+.customer-information {
+    width: 35%;
+    margin-right: 15px;
+}
+
+.customer-contact-detail{
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 15px;
+    .contact-txt {
+        overflow-wrap: break-word;
+    }
+}
+
+.customer-address-detail{ 
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.125);
+    .address-txt {
+        overflow-wrap: break-word;
+        p{
+            margin-bottom: 0;
+        }
+        .add-address-btn {
+            cursor: pointer;
+        }
+        .address-txt-info {
+            margin-bottom: 15px;
+        }
+    }
+}  
+
+.phone-address-edit { 
+    width: 100%;
+    display: flex;
+    p {
+        font-size: 0.75em;
+        margin-left: 8px;
+        cursor: pointer;
+        text-decoration: underline;
+        &:hover{
+            color: var(--color-secondary);
+        }
+    }
+}
+
+.orders-wishlist-wrapper{
+    header {
+        nav {
+            ul {
+                display: flex;
+                width: 100%;
+                li {
+                    width: 50%;
+                    text-align: center;
+                    padding: 25px;
+                    list-style: none;
+                    cursor: pointer;
+                    border-bottom: 1px solid rgba(0,0,0,.125);
+                    background-color: #f8f8f8;
+                    display: flex;
+                    justify-content: center;
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.24);
+                        color: #fff;
+                        transition: all 0.2s ease-out;
+                    }
+                    p {
+                        margin: 0;
+                        align-self: center;
+                    }
+                }
+                .selected-section {
+                    background-color: var(--color-secondary);
+                    color: #fff;
+                    transition: all 0.2s ease-out;
+                }
+                .my-orders-title {
+                    border-right: 1px solid rgba(0,0,0,.125);
+                }
+            }
+        }
+    }
+}
+
+.orders-content {
+    padding: 0 15px;
+    .order-info-wrapper {
+        height: 100%;
+        margin: 15px 0;
+        background-color: #fff;
+        .order-header {
+            .see-order-details {
+                cursor: pointer;
+                text-decoration: underline;
+                &:hover {
+                    color: var(--color-secondary);
+                }
+            }
+        }
+    }
+}
+
+.order-table { 
+    overflow: hidden;
+    .order-table-wrapper{
+        padding: 20px;
+        overflow-x: auto;
+        table {
+            width: 100%;
+            text-align: center;
+            .product-detail-th {
+                text-align: left;
+            }
+            .order-item-name {
+                text-align: left;
+            }
+            th, td {
+                padding: 15px;
+                p {
+                    margin: 0;
+                }  
+            }
+        }
+        table, th, td {
+            border: 1px solid rgba(0,0,0,.125);
+            border-collapse: collapse;
+        }
+    }
+}
+
+.order-table-total {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 0;
+    margin-right: 20px;
+}
+
+.empty-order-wishlist {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+}
+
+.wishlist-item {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 15px 0;
+    width: 100%;
+    .wishlist-item-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        .wishlist-item-img {
+            text-align: center;
+            width: 30%;
+            img {
+                cursor: pointer;
+            }
+        }
+        .wishlist-item-details {
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            width: 30%;
+            p {
+                cursor: pointer;
+                margin: 0;
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    &:hover{
+                        color: gray;
+                    }
+                }
+            }
+        }
+    }
+ 
+    .wishlist-item-buttons {
+        height: 100%;
+        align-items: center;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        div {
+            width: 65%; 
+            button {
+                width: 100%;
+                &:hover {
+                    background-color: gray;
+                    color: #fff !important;
+                }
+            }
+        }
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-details-container {
+        flex-direction: column;
+        .customer-information, .customer-orders-details {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    }
+    .wishlist-content {
+        .empty-wishlist{
+            margin-top: 20px ;
+            min-height: 200px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .dashboard-details-container {
+        padding: 0;
+    }
 }

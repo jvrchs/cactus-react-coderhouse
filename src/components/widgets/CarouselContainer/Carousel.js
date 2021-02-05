@@ -34,7 +34,7 @@ const Carousel = ({slides}) => {
                                         <br/>
                                         
                                         <Link className="shop-btn" to='/tienda'>
-                                            <Button buttonSize="btn--medium" buttonStyle="btn--outline">    
+                                            <Button buttonSize="btn--medium" buttonStyle="btn--outline" className="carousel-btn">    
                                                 TIENDA
                                             </Button>
                                         </Link>

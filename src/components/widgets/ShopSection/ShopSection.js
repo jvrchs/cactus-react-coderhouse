@@ -4,15 +4,13 @@ import ItemCard from '../ItemCard/ItemCard';
 import Button from '../Button/Button';
 import {Link} from 'react-router-dom';
 
-const ShopSection = ({productsData}) => {
+const ShopSection = ({productsData, handleAlert}) => {
 
     return (
 
         <div className="shop-section">
             <div className="section-title">
-                <span></span>
                 <h2>TIENDA</h2>
-                <span></span>
             </div>
             <div className="item-card-container">
                 {productsData.map(item => {
@@ -27,6 +25,7 @@ const ShopSection = ({productsData}) => {
                         image={item.images[0]}
                         alt={item.alt}
                         stock={item.stock}
+                        handleAlert={handleAlert}
                         />
                     )
                 })}

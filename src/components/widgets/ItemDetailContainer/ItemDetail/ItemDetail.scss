@@ -2,27 +2,39 @@
 @import '../../../../design-tokens/css-variables.scss';
 
 .item-detail-container {
-    margin-top: 8rem;
+    margin-top: 12rem;
     display: flex;
     justify-content: space-evenly;
     justify-items: center;
     align-content: center;
     align-items: flex-start;
+    font-size: 1.6rem;
 }
 
 .item-detail-info-wrapper {
     width: 50%;
-    padding: 2rem 4rem;
+    padding: 2rem 2rem;
     background-color: #f6f6f6;
-
-    h1 {
-        font-size: 3rem;
+    .item-detail-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
     }
-
+    p {
+        font-size: 1.1em;
+    }
+    h1 {
+        font-size: 2em;
+    }
     h1+p {
         width: 100%;
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1em;
+        margin: 1rem 0;
     }
 
     .old-price-detail {
@@ -34,6 +46,79 @@
         color: red;
         font-weight: 800;
         text-align: left;
+        font-size: 1.5em;
     }
-    
+    .price-detail {
+        font-weight: 800;
+    }
+    small {
+        p {
+            margin-top: 0.5rem;
+        }
+    }
+    .stock-message {
+        color: red;
+        margin-top: 1rem;
+    }
+    .heart{
+        width: 10%;
+        &:hover {
+            cursor: pointer;
+        }
+        svg,path,circle{
+            width: 100%;
+            stroke: #000;
+            stroke-width: 2rem;
+            fill:transparent;
+            font-size: 3rem;
+            &:hover {
+                stroke: red;
+                fill: red
+            }
+        }
+        &.filled {
+            svg, path, circle {
+                stroke: red;
+                fill: red
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .item-detail-info-wrapper {
+        margin-left: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .item-detail-container {
+        flex-direction: column;
+    };
+    .item-detail-info-wrapper {
+        padding: 1rem 2rem;
+        margin: 0;
+        margin-top: 1.5rem;
+        align-self: center;
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .item-detail-container {
+        margin-top: 3.5rem;
+    }
+    .item-detail-info-wrapper {
+        width: 100%;
+        word-wrap: break-word;
+        h1 {
+            font-size: 1.3em;
+        }
+        .old-price-detail, .new-price-detail {
+            font-size: 1.1em;
+        }
+        .price-detail {
+            font-size: 1.1em;
+        }
+    }
 }

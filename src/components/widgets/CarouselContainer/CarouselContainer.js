@@ -2,10 +2,14 @@ import React, {useState, useEffect} from 'react';
 import carouselData from '../../data/carouselData';
 import './Carousel.scss';
 import Carousel from './Carousel';
+import Loader from '../Loader/Loader';
 
 
 const CarouselContainer = () => {
+
     const [slidesData, setSlidesData] = useState([]);
+
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
         const getSlides = new Promise((resolve, reject) => {
@@ -13,16 +17,17 @@ const CarouselContainer = () => {
             });
             getSlides.then((slidesArr) => {
                 setSlidesData(slidesArr)
+                setLoader(false);
         });
     }, []);
 
     return(
         <>
             {
-                slidesData.length > 0 ?
+                !loader ?
                 <Carousel slides={slidesData} />
                 :
-                <p>Cargando...</p>
+                <Loader/>
             }
         </>
     )

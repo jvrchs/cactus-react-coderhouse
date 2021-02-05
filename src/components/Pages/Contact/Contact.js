@@ -1,18 +1,14 @@
 import React from 'react';
 import './Contact.scss';
-import FormContainer from '../../widgets/FormContainer/FormContainer';
+import ContactForm from '../../widgets/Form/ContactForm';
 
 const Contact = () => {
     return (
         <section className="contact-section section-box">
             <div className="contact-container section-container-box">
                 <div className="section-title">
-                    <span></span>
-                    <h1>CONTACTO</h1>
-                    <span></span>
+                    <h1>CONTACTO</h1>      
                 </div>
-                <br/>
-                <br/>
                 <div className="contact-info">
                     <p>ventas@cactus.com</p>
                     <br/>
@@ -23,7 +19,7 @@ const Contact = () => {
                     <p>Calle ###, Viña del Mar, Valparaíso, Chile</p>
                 </div>
                 <br/>
-                <FormContainer formName='contact' btnLabel="Enviar"/>
+                <ContactForm/>
             </div>
         </section>
     )

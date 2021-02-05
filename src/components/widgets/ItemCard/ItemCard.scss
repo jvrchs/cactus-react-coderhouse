@@ -43,19 +43,27 @@
         justify-content: flex-start;
         align-items: flex-start;
         flex-direction: column;
-        width: 3rem;
+        width: 4rem;
         height: 3rem;
-        margin-right: 1rem;
         &:hover {
             cursor: pointer;
         }
         svg,path,circle{
             stroke: #000;
-            stroke-width: 1.7rem;
+            stroke-width: 2rem;
             fill:transparent;
-            transition-delay: .2s;
             font-size: 6rem;
+            &:hover {
+                stroke: red;
+                fill: red
+            }
         }
+        &.filled {
+            svg, path, circle {
+                stroke: red;
+                fill: red
+            }
+        } 
     }
 }
 
@@ -105,6 +113,10 @@
         font-size: 1.8rem;
         text-align: center;
     }
+    .no-stock-message {
+        color: red;
+        font-size: 2rem;
+    }
 }
 
 .action {
@@ -142,10 +154,4 @@
 
 .no-offer {
     display: none;
-}
-
-@media screen and (max-width: 600px) {
-    .item-card {
-        width: 100%;
-    }
 }

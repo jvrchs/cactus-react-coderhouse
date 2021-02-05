@@ -12,6 +12,7 @@ html {
   /* 1rem = 10px */
   font-size: 62.5%;
   height: 100%;
+  background-color: #fff;
 }
 
 body {
@@ -35,51 +36,69 @@ p {
 .section-title {
   font-size: $h1-title-size;
   width: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 13rem;
-  span {
-    width: -webkit-fill-available;
-    height: 1px;
-    background-color: #000;
-    opacity: 0.2;
-    &:nth-child(1) {
-      margin-right: 1rem;
-    }
-    &:nth-child(3) {
-      margin-left: 1rem;
-    }
-  }
+  margin: 3rem 0;
   h1, h2 {
       font-size: 1em;
       text-align: center;
-      width: 100%;
     }
 }
 
 .section-box {
   margin-top: $section-margin-top;
+  margin-bottom: 3rem;
   padding: 0 4rem;
+  animation: appear 0.9s;
+  min-height: calc(100vh - 80px);
 }
 
 .section-container-box {
-  padding: 4rem 4rem 0 4rem;
+  padding-top: 1rem;
   &.home-container {
     padding: 0 4rem;
   }
-}
-
-.item-list-container-box {
-  padding: 5rem 0 0 0;
 }
 
 .hide {
   display: none;
 }
 
+.visibility {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 960px) {
+  .section-box {
+    margin-top: $section-margin-top + 3rem;
+  }
+  .section-container-box {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-box {
+    padding: 0 2rem;
+    margin-top: $section-margin-top + 3rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   p {
     font-size: $p-font-size-mobile;
   }
+  .section-box {
+    margin-top: 0;
+  }
+  .section-container-box {
+    &.home-container {
+      padding: 0 2rem;
+    }
+  }
+  
 }
+
+@keyframes appear {
+  from {opacity: 0 ;}
+  to {opacity: 1; }
+}
+

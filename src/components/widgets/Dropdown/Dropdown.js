@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import categories from '../../data/categories';
 import './Dropdown.scss'
 
-
 const Dropdown = () => {
     
     const [click, setClick] = useState(false);

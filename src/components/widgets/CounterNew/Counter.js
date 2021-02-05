@@ -2,7 +2,7 @@ import React from 'react';
 
 const Counter = (props) => {
 
-    const {increase, decrease, stockQty, counterValue, handleChange, itemId} = props
+    const {increase, decrease, stockQty, counterValue, handleChange} = props
 
     return(
         <div className="counter">

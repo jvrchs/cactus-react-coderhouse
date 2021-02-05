@@ -1,0 +1,37 @@
+@import '../../../design-tokens/css-variables.scss';
+
+.bouncer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    height: 100vh;
+    margin: auto;
+    margin-top: 8rem;
+    animation: appear 1s;
+    div {
+        width: 20px;
+        height: 20px;
+        background-color: var(--color-primary);
+        border-radius: 50%;
+        animation: bouncer 0.5s cubic-bezier(.19, .57, .3, .98) infinite alternate;
+        &:nth-child(2) {
+            animation-delay: 0.1s;
+            opacity: 0.8;
+        }
+        &:nth-child(3) {
+            animation-delay: 0.2s;
+            opacity: 0.6;
+        }
+        &:nth-child(4) {
+            animation-delay: 0.3s;
+            opacity: 0.4;
+        }
+    }
+}
+
+@keyframes bouncer {
+    from {transform: translateY(0);}
+    to {transform: translateY(-100px);}
+}
+

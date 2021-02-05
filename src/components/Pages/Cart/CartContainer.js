@@ -1,32 +1,30 @@
 import React, {useEffect, useContext, useState} from 'react';
 import {getFirestore} from '../../firebase/firebase';
-import {context} from '../../context/context';
-import Cart from './Cart'
+import Cart from './Cart';
+import { contextForCart } from '../../context/contextForCart';
+import './Cart.scss';
+import Loader from '../../widgets/Loader/Loader';
+import AlertMessage from '../../widgets/AlertMessage/AlertMessage';
 
 const CartContainer = () => {
     
-    const {cart, setCart, cartData, setCartData, addItem, clpCurrencyFormat, removeItem, total, setTotal} = useContext(context);
+    const {cart, cartData, setCartData, clpCurrencyFormat, total, setTotal, dispatch} = useContext(contextForCart);
 
-    const [newCart, setNewCart] = useState([]);
-    
     const [productsData, setProductsData] = useState(false);
 
-    const [qty, setQty] = useState(0);
+    const [showAlert, setShowAlert] = useState(false);
 
-    const onAdd = (itemAdded, id) => {
-        setQty(itemAdded)
-        addItem(id, itemAdded)
-    }
+    const [loader, setLoader] = useState(true);
 
-    const cartUpdate = () => {
-        setCart(newCart)
+    const handleAlert = () => {
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 5000);
     }
 
     useEffect(() => {
         const db = getFirestore();
         const itemsCollection = db.collection('Items');
         const query = itemsCollection.get();
-
         query
         .then((response) => {
             let tempArr = [];
@@ -37,6 +35,7 @@ const CartContainer = () => {
                 })
             });
             setProductsData(tempArr)
+            setLoader(false);
         })
         .catch((reject) => {
             console.log(reject)
@@ -46,10 +45,13 @@ const CartContainer = () => {
     return (
         <>
             {
-                productsData ?
-                <Cart productsData={productsData} cart={cart} newCart={newCart} setNewCart={setNewCart} addItem={addItem} cartData={cartData} setCartData={setCartData} total={total} setTotal={setTotal} qty={qty} setQty={setQty} onAdd={onAdd} clpCurrencyFormat={clpCurrencyFormat} removeItem={removeItem} cartUpdate={cartUpdate}/>
+                loader ?
+                <Loader/>
                 :
-                <p>LOADING</p>
+                <>
+                    {!showAlert ? null : <AlertMessage message='No hay más stock de este item'/>}
+                    <Cart productsData={productsData} cart={cart} cartData={cartData} setCartData={setCartData} total={total} setTotal={setTotal} clpCurrencyFormat={clpCurrencyFormat} dispatch={dispatch} handleAlert={handleAlert}/>
+                </>
             }
         </>
     )

@@ -1,0 +1,15 @@
+.cart-counter-wrapper {
+    .counter-btn{
+        background: transparent;
+        border: none;
+        width: auto;
+        font-size: 1.5rem;
+        cursor: pointer;
+        &:focus {
+            outline: none;
+        }
+    }
+    input {
+        border: none;
+    }
+}

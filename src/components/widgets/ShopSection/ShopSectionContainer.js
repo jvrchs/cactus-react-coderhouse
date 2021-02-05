@@ -1,21 +1,36 @@
 import React, {useEffect, useState} from 'react';
 import ShopSection from './ShopSection';
 import {getFirestore} from '../../firebase/firebase';
+import Loader from '../Loader/Loader';
 
-const ShopSectionContainer = () => {
+const ShopSectionContainer = ({handleAlert}) => {
 
     const[productsData, setProductsData] = useState(false);
+
+    const [loader, setLoader] = useState(true);
+
+    const productsSortedByName = products => {
+        const orderedProducts = products.sort((a,b) => {
+            const itemA = a.itemName.toLowerCase();
+            const itemB = b.itemName.toLowerCase();
+            if (itemA < itemB) {
+                return -1;
+            }
+            if (itemA > itemB) {
+                return 1;
+            }
+            return 0;
+        })
+        return orderedProducts;
+    }
 
     useEffect(() => {
         
         let mounted = true;
 
         const db = getFirestore();
-
         const itemsCollection = db.collection('Items');
-        
         const query = itemsCollection.get();
-
         query.then(response => {
             let tempArr = [];
             let randomProductsArr = [];
@@ -30,21 +45,21 @@ const ShopSectionContainer = () => {
             }
 
             if(mounted) {
-                setProductsData(randomProductsArr)
-                }
+                setProductsData(productsSortedByName(randomProductsArr))
+                setLoader(false)
+            }
        })
 
        return () => {mounted = false}
-
     }, [])
 
     return (
         <>
             {
-                productsData ?
-                <ShopSection productsData={productsData}/>
+                loader ?
+                <Loader/>
                 :
-                <p>Cargando productos...</p>
+                <ShopSection productsData={productsData} handleAlert={handleAlert}/>
             }
         </>
     )

@@ -1,121 +1,52 @@
-import React, {useEffect, useState} from 'react';
-import {Provider} from './context';
-import firebase from "firebase/app";
-import "firebase/auth";
+import React, {useReducer, useState, useEffect} from 'react';
+import { cartReducer } from './cartReducer';
+import { Provider } from './contextForCart';
 
 const CartContext = ({children}) => {
 
-    const [cart, setCart] = useState([]);
+    const localCart = JSON.parse(localStorage.getItem('cart'));
+
+    const [cart, dispatch] = useReducer(cartReducer, localCart === null || localCart === [] ? [] : localCart)
 
     const [cartData, setCartData] = useState([]);
+
+    const [cartQty, setCartQty] = useState(0);
 
     const [order, setOrder] = useState({});
 
     const [total, setTotal] = useState(0);
 
-    const [loggedIn, setLoggedIn] = useState(false);
-    console.log(loggedIn);
-    const [currentUserId, setCurrentUserId] = useState(null);
-    console.log(currentUserId);
-    const [currentUserData, setCurrentUserData] = useState({})
-    console.log(currentUserData);
-    const clpCurrencyFormat = (price) => {
-        return new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(price)
+    const clpCurrencyFormat = price => {
+        return new Intl.NumberFormat("es-CL", {style: "currency", currency: "CLP"}).format(price);
     } 
 
-    const cartSortedByName = cart => {
-        const orderedCart = cart.sort((a, b) => {
-            const itemA = a.itemId.toLowerCase();
-            const itemB = b.itemId.toLowerCase();  
-            if (itemA < itemB) {
-                return -1
-            }
-            if (itemA > itemB) {
-                return 1
-            }
-            return 0
-        })
-     
-        setCart(orderedCart)
-    }
-
-    const addItem = (id, qty) => {
-
-        let tempArr = [];
-
-        const itemObject = {
-            itemId: id,
-            quantity: qty
+    const cartWidgetCounter = () => {
+        let qtyInCart = 0;
+        for(let i = 0; i < cart.length; ++i) {
+            qtyInCart += cart[i].quantity 
         }
-
-        for (let i = 0; i < cart.length; i++) {
-            if (cart.length !== 0) {
-                if (id !== cart[i].itemId) {
-                    tempArr.push(cart[i]); 
-                } else {
-                    itemObject.quantity = qty + cart[i].quantity
-                } 
-            }
-        }
-        
-        tempArr.push(itemObject);
-
-        cartSortedByName(tempArr);    
-    } 
-
-    const removeItem = id => {
-        const tempArr = cart.filter(item => item.itemId !== id);
-        cartSortedByName(tempArr); 
+        setCartQty(qtyInCart)
     }
-
-    const clearCart = () => {
-        setCart([]);
-    }
-
-    const isInCart = id => {
-        const tempArr = cart.filter(item => item.itemId === id);
-        return(tempArr.length > 0 ? true : false);
-    }
-
-    //Add a realtime auth listener
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if(firebaseUser) {
-            setLoggedIn(true);
-        }
-    });
 
     useEffect(() => {
-        //Realtime database listener
-        let databaseListener = firebase.database().ref(`users/${currentUserId}`);
-        console.log(databaseListener);
-        databaseListener.on('value', snap => {
-            const data = snap.val();
-            setCurrentUserData(data);
-        })
-    }, [loggedIn])
-
+        localStorage.setItem('cart', JSON.stringify(cart));
+        cartWidgetCounter()
+    }, [cart]);
+    
     return (
         <Provider value={
             {
                 cart, 
-                setCart, 
                 cartData, 
                 setCartData, 
                 total, 
                 setTotal, 
                 order, 
                 setOrder, 
-                addItem, 
-                removeItem, 
-                clearCart, 
-                isInCart, 
-                clpCurrencyFormat, 
-                loggedIn, 
-                setLoggedIn,
-                currentUserData, 
-                setCurrentUserData,
-                currentUserId, 
-                setCurrentUserId}}>
+                clpCurrencyFormat,
+                dispatch,
+                cartQty
+            }}>
             {children}
         </Provider>
     )   
