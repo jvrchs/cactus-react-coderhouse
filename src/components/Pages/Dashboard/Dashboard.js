@@ -77,7 +77,7 @@ const Dashboard = () => {
                         tempArr.push(doc.data())
                     }  
                 });
-                setOrdersData(tempArr)              
+                setOrdersData(tempArr.reverse())              
             });
         } else {
             setOrdersData([])

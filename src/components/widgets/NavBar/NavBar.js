@@ -91,14 +91,14 @@ const NavBar = () => {
         } else {
             setNavbar(true);
         }
-    }, [click, size]);
+    }, [click]);
 
     return(
         <>
             <nav className=
                 {
                 url.pathname === '/' ? 
-                    (navbar ? 'navbar-items notScrolled':'navbar-items')
+                    (navbar && size > 600 ? 'navbar-items notScrolled':'navbar-items')
                     :
                     'navbar-items'
                 }

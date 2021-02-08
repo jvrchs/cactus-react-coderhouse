@@ -14,3 +14,9 @@
 .item-list-section {
     margin-top: 11rem !important;
 }
+
+@media screen and (max-width: 600px) {
+    .item-list-section {
+        margin-top: 3rem !important;
+    }
+}

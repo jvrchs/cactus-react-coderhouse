@@ -35,3 +35,9 @@
     to {transform: translateY(-100px);}
 }
 
+@media screen and (max-width: 600px) {
+    .bouncer {
+        margin-top: 0;
+    }
+} ;
+

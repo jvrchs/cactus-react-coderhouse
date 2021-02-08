@@ -65,6 +65,15 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
+                <div className="footer-contact-wrapper">
+                    <div className="footer-title">
+                        <h3>CONTACTO</h3>                        
+                    </div>
+                    <br/>
+                    <div className="footer-contact-links">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis maxime quasi repellat dolor neque minima amet, voluptatibus provident nobis cum quod delectus sequi.</p>
+                    </div>
+                </div>
                 <div className="footer-social-wrapper">
                     <div className="footer-title">
                         <h3>SÍGUENOS</h3>                        
@@ -73,15 +82,6 @@ const Footer = () => {
                     <div className="footer-social-links">
                         <a href="https://www.instagram.com/"  rel="noreferrer" target="_blank"><GrInstagram/></a>
                         <a href="https://www.facebook.com/"  rel="noreferrer"  target="_blank"><GrFacebookOption/></a>
-                    </div>
-                </div>
-                <div className="footer-contact-wrapper">
-                    <div className="footer-title">
-                        <h3>CONTACTO</h3>                        
-                    </div>
-                    <br/>
-                    <div className="footer-contact-links">
-
                     </div>
                 </div>
             </div> 

@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif
 }
 
 html {
@@ -22,6 +22,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
 }
 
 code {
@@ -31,6 +32,12 @@ code {
 
 p {
   font-size: $p-font-size;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  font-size: 16px !important;
 }
 
 .section-title {

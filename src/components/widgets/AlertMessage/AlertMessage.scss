@@ -10,6 +10,7 @@
     height: 60px;
     z-index: 10;
     top: calc(100vh - 80px);
+    animation: slide 0.1s ease-in-out;
     .alert-wrapper {
         display: flex;
         align-items: center;
@@ -17,6 +18,7 @@
         height: 100%;
         width: 90%;
         padding: 2rem;
+        animation: slide 2s;
         .alert-icon {
             svg, path, circle {
                 fill: #fff;
@@ -30,4 +32,9 @@
             margin: 0;
         }
     }
+}
+
+@keyframes slide {
+    from {transform: translateY(100%)}
+    to {transform: translateY(0)}
 }
